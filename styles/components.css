@@ -42,32 +42,77 @@ header nav ul li a:hover {
 
 /* buger button styling */
 
-.hamburger {
+/* SVG Hamburger Styling */
+.ham {
     display: none;
     cursor: pointer;
-    font-size: 2rem;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 400ms;
+    user-select: none;
 }
 
-/* responsive for mobile */
-@media (max-width:768px) {
-    .hamburger {
+.hamRotate.active {
+    transform: rotate(45deg);
+}
+
+.hamRotate180.active {
+    transform: rotate(180deg);
+}
+
+.line {
+    fill: none;
+    transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+    stroke: #F8F3F3; /* Matches navbar text color */
+    stroke-width: 5.5;
+    stroke-linecap: round;
+}
+
+/* Hamburger animation states */
+.ham3 .top {
+    stroke-dasharray: 40 130;
+}
+
+.ham3 .middle {
+    stroke-dasharray: 40 140;
+}
+
+.ham3 .bottom {
+    stroke-dasharray: 40 205;
+}
+
+.ham3.active .top {
+    stroke-dasharray: 75 130;
+    stroke-dashoffset: -63px;
+}
+
+.ham3.active .middle {
+    stroke-dashoffset: -102px;
+}
+
+.ham3.active .bottom {
+    stroke-dasharray: 110 205;
+    stroke-dashoffset: -86px;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+    .ham {
         display: block;
     }
 
     nav {
-        transition: max-height 0.3s ease;
         overflow: hidden;
         max-height: 0;
-        display: none;
+        transition: max-height 0.5s ease;
         position: absolute;
-        top:80px;
+        top: 80px;
         left: 0;
         width: 100%;
         background-color: #283618;
     }
+
     nav.active {
-        display: block;
-        max-height: 500px;
+        max-height: 500px; /* or auto-trick, I'll explain below */
     }
 
     nav ul {
@@ -76,5 +121,7 @@ header nav ul li a:hover {
         padding: 1rem;
     }
 }
+
+
 
 /* Footer Styling */
