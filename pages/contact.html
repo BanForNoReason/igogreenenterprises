@@ -4,6 +4,29 @@
     <meta charset="UTF-8">
     <title>Contact | igogreenenterprise</title>
     <link rel="stylesheet" href="/styles/contact.css">
+    <link rel="stylesheet" href="/styles/components.css">
+
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://banfornoreason.github.io/igogreenenterprise/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Contact",
+              "item": "https://banfornoreason.github.io/igogreenenterprise/pages/contact.html"
+            }
+          ]
+        }
+        </script>
+        
 </head>
 <body>
     <div id="header-placeholder"></div>
@@ -30,11 +53,13 @@
         </section>
     </main>
 
+    <!-- Footer Component Placeholder -->
     <div id="footer-placeholder"></div>
 
+    <!-- Components loader -->
+    <script src="/scripts/component-loader.js"></script>
     <script>
-        document.getElementById('header-placeholder').innerHTML = await fetch('/components/header.html').then(res => res.text());
-        document.getElementById('footer-placeholder').innerHTML = await fetch('/components/footer.html').then(res => res.text());
+        loadCommonComponents();
     </script>
 </body>
 </html>

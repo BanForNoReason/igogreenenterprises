@@ -2,8 +2,8 @@
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "igogreenenterprise",
-    "image": "https://yourusername.github.io/igogreenenterprise/public/images/logo.png",
-    "url": "https://yourusername.github.io/igogreenenterprise/",
+    "image": "https://banfornoreason.github.io/igogreenenterprise/public/images/logo.png",
+    "url": "https://banfornoreason.github.io/igogreenenterprise/",
     "telephone": "+1-206-715-6166",
     "address": {
       "@type": "PostalAddress",

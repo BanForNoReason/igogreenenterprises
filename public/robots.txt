@@ -1,1 +1,4 @@
-Going to tell bots what to crawl?
+User-agent: *
+Allow: /
+
+Sitemap: https://banfornoreason.github.io/igogreenenterprise/sitemap.xml

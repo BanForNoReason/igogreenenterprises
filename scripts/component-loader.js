@@ -10,6 +10,6 @@ async function loadComponent(id, file) {
 }
 
 function loadCommonComponents(){
-    loadComponent('header-palceholder', '/components/header.html');
-    loadComponent('footer-palceholder', '/components/footer.html');
+    loadComponent('header-placeholder', '/components/header.html');
+    loadComponent('footer-placeholder', '/components/footer.html');
 }
