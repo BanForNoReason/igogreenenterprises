@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Services | igogreenenterprise</title>
+    <link rel="stylesheet" href="/styles/services.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="services-hero">
+            <h1>Our Glass & Shower Door Services</h1>
+            <p>High-quality installations tailored to your needs.</p>
+        </section>
+
+        <section class="services-list">
+            <h2>What We Offer</h2>
+            <ul>
+                <li>Frameless Shower Doors</li>
+                <li>Custom Glass Installations</li>
+                <li>Commercial Glass Partitions</li>
+                <!-- Add more -->
+            </ul>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        document.getElementById('header-placeholder').innerHTML = await fetch('/components/header.html').then(res => res.text());
+        document.getElementById('footer-placeholder').innerHTML = await fetch('/components/footer.html').then(res => res.text());
+    </script>
+</body>
+</html>

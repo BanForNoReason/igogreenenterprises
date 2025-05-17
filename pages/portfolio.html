@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio | igogreenenterprise</title>
+    <link rel="stylesheet" href="/styles/portfolio.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="portfolio-hero">
+            <h1>Our Work</h1>
+            <p>Browse our recent glass & shower door projects.</p>
+        </section>
+
+        <section class="portfolio-gallery">
+            <!-- Image gallery goes here -->
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        document.getElementById('header-placeholder').innerHTML = await fetch('/components/header.html').then(res => res.text());
+        document.getElementById('footer-placeholder').innerHTML = await fetch('/components/footer.html').then(res => res.text());
+    </script>
+</body>
+</html>
