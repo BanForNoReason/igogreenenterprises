@@ -1,34 +1,33 @@
+/* Hero Section */
 .hero {
     position: relative;
     max-width: 100%;
     height: 40vh;
     min-height: 400px;
     overflow: hidden;
-}
-
-
-.hero-image {
+  }
+  
+  .hero-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-bottom-right-radius: 8px;
     border-bottom-left-radius: 8px;
-}
-
-.hero-text {
+  }
+  
+  .hero-text {
     font-family: Arial, Helvetica, sans-serif;
-    height: fit-content;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(0%, -100%);
     color: #ffffff;
     text-shadow: 1px 1px 3px black;
-
     font-weight: 900;
-}
-
-.hero-button {
+    height: fit-content;
+  }
+  
+  .hero-button {
     background-color: #283618;
     color: #ffffff;
     border-radius: 8px;
@@ -42,57 +41,8 @@
   .hero-button:hover {
     background-color: #3c4d21;
   }
-
-/* Card Grid Layout */
-/* Card Grid Layout */
-.cards-section {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    grid-gap: 2rem;
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
   
-  .card-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-  }
-  
- /* Very small screens - still maintain 2 columns */
-@media (max-width: 360px) {
-    .cards-section {
-      grid-template-columns: repeat(2, 1fr);
-      grid-gap: 0.75rem;
-      padding: 0.75rem;
-    }
-    
-    .card {
-      border-radius: 8px;
-    }
-    
-    .card-image-container {
-      height: 160px;
-    }
-    
-    .card-body {
-      padding: 0.75rem;
-    }
-    
-    .card-button {
-      padding: 0.3rem 0.75rem;
-      font-size: 0.8rem;
-    }
-  }/* Card body styling */
-  .card-body {
-    padding: 1.5rem;
-    text-align: center;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }/* Card Grid Layout */
+  /* Cards Section */
   .cards-section {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -123,24 +73,27 @@
     transform: translateY(-5px);
   }
   
-  /* Additional control for image display */
   .card-image-container {
     position: relative;
     overflow: hidden;
-    height: 300px;  /* Fixed container height */
+    height: 300px;
   }
   
   .card-image {
     height: 100%;
     width: 100%;
     object-fit: cover;
-    object-position: center;  /* Centers the image by default */
+    object-position: center;
     transition: transform 0.3s ease;
   }
   
-  /* Remove image hover effect */
-  .card:hover {
-    transform: translateY(-5px);
+  .card-body {
+    padding: 1.5rem;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   
   .card-body h3 {
@@ -169,46 +122,67 @@
   }
   
   /* Responsive Adjustments */
-  /* Responsive Adjustments - Maintain 2 columns minimum on mobile */
   @media (max-width: 768px) {
     .cards-section {
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       grid-gap: 1.5rem;
       padding: 1.5rem;
     }
-    
+  
     .card-image-container {
-      height: 270px; /* Slightly shorter on tablet to maintain proportions */
+      height: 270px;
     }
   }
   
   @media (max-width: 480px) {
     .cards-section {
-      grid-template-columns: repeat(2, 1fr); /* Force exactly 2 columns on small screens */
+      grid-template-columns: repeat(2, 1fr);
       grid-gap: 1rem;
       padding: 1rem;
     }
-    
+  
     .card-image-container {
-      height: 200px; /* Adjust height for smaller screens */
+      height: 200px;
     }
-    
+  
     .card-body {
       padding: 1rem;
     }
-    
+  
     .card-body h3 {
       font-size: 1rem;
       margin-bottom: 0.25rem;
     }
-    
+  
     .card-body p {
       font-size: 0.85rem;
       margin-bottom: 0.75rem;
     }
-    
+  
     .card-button {
       padding: 0.4rem 1rem;
       font-size: 0.85rem;
     }
   }
+  
+  @media (max-width: 360px) {
+    .cards-section {
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 0.75rem;
+      padding: 0.75rem;
+    }
+  
+    .card-image-container {
+      height: 160px;
+    }
+  
+    .card-body {
+      padding: 0.75rem;
+    }
+  
+    .card-button {
+      padding: 0.3rem 0.75rem;
+      font-size: 0.8rem;
+    }
+  }
+  
