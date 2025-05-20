@@ -1,6 +1,6 @@
 /* Global Body Styling */
 body {
-    background-color: #F8F3F3;
+    background-color: #ffffff;
     color: #252525; /* default text color */
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
@@ -11,7 +11,7 @@ body {
 header {
     height: 80px;
     background-color: #283618;
-    color: #F8F3F3;
+    color: #ffffff;
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
@@ -31,7 +31,7 @@ header nav ul {
 }
 
 header nav ul li a {
-    color: #F8F3F3;
+    color: #ffffff;
     text-decoration: none;
     font-weight: bold;
 }
@@ -62,7 +62,7 @@ header nav ul li a:hover {
 .line {
     fill: none;
     transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
-    stroke: #F8F3F3; /* Matches navbar text color */
+    stroke: #ffffff; /* Matches navbar text color */
     stroke-width: 5.5;
     stroke-linecap: round;
 }
