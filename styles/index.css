@@ -11,6 +11,8 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
 }
 
 .hero-text {
@@ -40,4 +42,85 @@
   .hero-button:hover {
     background-color: #3c4d21;
   }
+
+/* Card Grid Layout */
+.cards-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
   
+  .card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  
+  .card {
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: #fff;
+    height: 100%;
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card-image {
+    height: 200px; /* Fixed height for consistency */
+    object-fit: cover;
+    width: 100%;
+  }
+  
+  .card-body {
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+  .card-body h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: #283618;
+  }
+  
+  .card-body p {
+    margin-bottom: 1.5rem;
+    color: #555;
+  }
+  
+  .card-button {
+    display: inline-block;
+    background: #283618;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .card-button:hover {
+    background-color: #3c4d21;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .cards-section {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      grid-gap: 1.5rem;
+      padding: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .cards-section {
+      grid-template-columns: 1fr;
+      grid-gap: 1rem;
+      padding: 1rem;
+    }
+  }
