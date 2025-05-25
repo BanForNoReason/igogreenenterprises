@@ -40,24 +40,13 @@
       <p>Modern and secure glass railings and wall installations for residential and commercial spaces.</p>
     </section>
 
-    <section class="gallery-container">
-      <!-- Sample gallery items -->
-      <div class="image-card" onclick="openLightbox(0)">
-        <img src="/public/images/showerdoor-styles/glass-rails-walls/1.JPG" alt="Glass Rails 1" />
-      </div>
-      <div class="image-card" onclick="openLightbox(1)">
-        <img src="/public/images/showerdoor-styles/glass-rails-walls/2.JPG" alt="Glass Rails 2" />
-      </div>
-      <div class="image-card" onclick="openLightbox(2)">
-        <img src="/public/images/showerdoor-styles/glass-rails-walls/3.JPG" alt="Glass Rails 3" />
-      </div>
-    </section>
+    <section class="gallery-container" id="gallery"></section>
   </main>
 
   <div id="lightbox" class="lightbox">
     <span class="close" onclick="closeLightbox()">&times;</span>
     <img class="lightbox-img" id="lightbox-img" />
-    <div class="lightbox-index" id="lightbox-index">1 of 3</div>
+    <div class="lightbox-index" id="lightbox-index">1 of 0</div>
     <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
     <a class="next" onclick="changeSlide(1)">&#10095;</a>
   </div>
@@ -67,11 +56,28 @@
   </footer>
 
   <script>
-    const images = [
-      "/public/images/showerdoor-styles/glass-rails-walls/1.JPG",
-      "/public/images/showerdoor-styles/glass-rails-walls/2.JPG",
-      "/public/images/showerdoor-styles/glass-rails-walls/3.JPG"
-    ];
+    const imageCount = 4; // Adjust this to the number of images you have
+    const imageFolder = "/public/images/showerdoor-styles/glass-rails-walls/";
+    const images = [];
+
+    const galleryContainer = document.getElementById("gallery");
+
+    for (let i = 1; i <= imageCount; i++) {
+      const imagePath = `${imageFolder}${i}.JPG`;
+      images.push(imagePath);
+
+      const div = document.createElement("div");
+      div.classList.add("image-card");
+      div.onclick = () => openLightbox(i - 1);
+
+      const img = document.createElement("img");
+      img.src = imagePath;
+      img.alt = `Glass Rails ${i}`;
+
+      div.appendChild(img);
+      galleryContainer.appendChild(div);
+    }
+
     let currentIndex = 0;
 
     function openLightbox(index) {
