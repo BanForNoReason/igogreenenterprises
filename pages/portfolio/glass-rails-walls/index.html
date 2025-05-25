@@ -63,30 +63,32 @@
   </footer>
 
   <script>
-    const imageCount = 96; // Adjust this to the number of images you have
-    const imageFolder = "/public/images/showerdoor-styles/glass-rails-walls/";
-    const images = [];
+const imageCount = 96;
+const thumbnailFolder = "/public/images/showerdoor-styles/glass-rails-walls/thumbnails/";
+const fullImageFolder = "/public/images/showerdoor-styles/glass-rails-walls/";
+const images = [];
 
-    const galleryContainer = document.getElementById("gallery");
+const galleryContainer = document.getElementById("gallery");
 
-    for (let i = 1; i <= imageCount; i++) {
-      const imagePath = `${imageFolder}${i}.JPG`;
-      images.push(imagePath);
+for (let i = 1; i <= imageCount; i++) {
+  const fullImagePath = `${fullImageFolder}${i}.JPG`;
+  const thumbnailPath = `${thumbnailFolder}${i}.webp`;
+  images.push(fullImagePath);
 
-      const div = document.createElement("div");
-      div.classList.add("image-card");
-      div.onclick = () => openLightbox(i - 1);
+  const div = document.createElement("div");
+  div.classList.add("image-card");
+  div.onclick = () => openLightbox(i - 1);
 
-      const img = document.createElement("img");
-      img.src = imagePath;
-      img.alt = `Glass Rails ${i}`;
-      if (i > 30) {
-        img.loading = "lazy"
-      }
-      
-      div.appendChild(img);
-      galleryContainer.appendChild(div);
-    }
+  const img = document.createElement("img");
+  img.src = thumbnailPath;
+  img.alt = `Glass Rails ${i}`;
+  if (i > 30) {
+    img.loading = "lazy";
+  }
+
+  div.appendChild(img);
+  galleryContainer.appendChild(div);
+}
 
     let currentIndex = 0;
 
