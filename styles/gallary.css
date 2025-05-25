@@ -91,7 +91,7 @@
 /* Mobile optimizations */
 @media (max-width: 768px) {
   .gallery-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: 2fr;
     padding: 1.5rem 6vw;
     gap: 1.5rem;
   }
