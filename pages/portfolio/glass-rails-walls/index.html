@@ -6,6 +6,13 @@
   <title>Glass Rails and Walls Gallery | igogreenenterprise</title>
   <link rel="stylesheet" href="/styles/components.css" />
   <link rel="stylesheet" href="/styles/gallary.css" />
+
+      <!-- Favicon and Icons -->
+      <link rel="apple-touch-icon" sizes="180x180" href="/public/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon-16x16.png">
+      <link rel="manifest" href="/public/site.webmanifest">
+      <link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon">
 </head>
 <body>
   <!-- Header -->
@@ -56,7 +63,7 @@
   </footer>
 
   <script>
-    const imageCount = 90; // Adjust this to the number of images you have
+    const imageCount = 96; // Adjust this to the number of images you have
     const imageFolder = "/public/images/showerdoor-styles/glass-rails-walls/";
     const images = [];
 
@@ -73,9 +80,10 @@
       const img = document.createElement("img");
       img.src = imagePath;
       img.alt = `Glass Rails ${i}`;
-      if (i > 15) {
+      if (i > 30) {
         img.loading = "lazy"
       }
+      
       div.appendChild(img);
       galleryContainer.appendChild(div);
     }

@@ -16,6 +16,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 1000;
 }
 
 header .logo img {
@@ -111,6 +112,13 @@ header nav ul li a:hover::after {
         display: block;
     }
 
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 96%;
+    }
+    
     nav {
         overflow: hidden;
         max-height: 0;
@@ -120,6 +128,7 @@ header nav ul li a:hover::after {
         left: 0;
         width: 100%;
         background-color: #283618;
+        z-index: 1000;
     }
 
     nav.active {
