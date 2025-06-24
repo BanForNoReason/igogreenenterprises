@@ -88,22 +88,18 @@
   font-size: 1.2rem;
 }
 
-/* Mobile optimizations */
-@media (max-width: 768px) {
-  .gallery-container {
-    grid-template-columns: 2fr;
-    padding: 1.5rem 6vw;
-    gap: 1.5rem;
+/* ─── Phone-friendly grid (2-up) ───────────────────────────── */
+@media (max-width:600px){
+  .gallery-container{
+    /* exactly two equal columns; cards shrink to fit */
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    gap:1rem;                       /* a little tighter looks nicer */
   }
+}
 
-  .lightbox .close,
-  .lightbox .prev,
-  .lightbox .next {
-    font-size: 2rem;
-  }
-
-  .lightbox-img {
-    max-width: 95%;
-    max-height: 75vh;
+/* Extra-small screens (≤360 px) → single column to avoid overflow */
+@media (max-width:360px){
+  .gallery-container{
+    grid-template-columns:1fr;
   }
 }
