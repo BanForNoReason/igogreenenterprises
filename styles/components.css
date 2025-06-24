@@ -33,6 +33,14 @@ header{
   overflow: visible;
 }
 
+/* hide header whenever the class is applied */
+.header-hidden{
+  /* use both properties to be 100 % sure */
+  visibility:hidden !important;
+  pointer-events:none !important;
+}
+
+
 .logo{
   position:relative;
   height:100%;
