@@ -1,3 +1,9 @@
+:root{
+  --bar-h: 80px;          /* height of the dark bar itself   */
+  --logo-h: 180px;        /* total visible logo height       */
+  --logo-overhang: calc( (var(--logo-h) - var(--bar-h)) / 2 );
+}
+
 /* ─────────── Global styling ─────────── */
 html,
 body{
@@ -22,12 +28,31 @@ header{
   display:flex;
   align-items:center;
   position:fixed; top:0; left:0;
-  z-index:1000;
+  z-index:1300;
+  height: var(--bar-h);
+  overflow: visible;
 }
-header .logo img{
+
+.logo{
+  position:relative;
+  height:100%;
+}
+
+/* oversize the image and centre it vertically */
+.logo img{
+  height:180px;                /* ← bigger than bar (tweak)       */
+  width:auto;
+  position:absolute;           /* pull it out of normal flow      */
+  top:50%;                     /* centre vertically               */
+  transform:translateY(-50%);
+  /* optional: add a bit of horizontal breathing-room */
+  margin-left: -45px;           /* adjust if it nudges the nav     */
+}
+
+/* header .logo img{
   height:clamp(48px,8vw,80px);
   width:auto;
-}
+} */
 
 /* inner container centres & caps width */
 .header-inner{
@@ -101,30 +126,28 @@ nav ul li a:hover::after{ opacity:1; }
   nav ul li a{ font-size:0.94rem; }
 }
 
-/* ≤ 992 px: burger mode */
-@media (max-width:992px){
+@media (max-width: 992px){
   .ham{ display:block; }
 
-  /* reset extra padding so mobile menu spans full width */
-  nav{ padding-right:0; }
-
   nav{
-    position:fixed;
-    top:clamp(48px,8vw,80px);
-    right:0;
-    width:100%;
-    max-height:0;
-    overflow:hidden;
-    background:#283618;
-    transition:max-height .35s ease;
+    position: fixed;
+    top: var(--bar-h);                 /* 80 px */
+    right: 0;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    background: #283618;
+    transition: max-height .35s ease;
+    z-index: 1200;                    /* below header, above content */
   }
-  nav.active{ max-height:480px; }
+  nav.active{ max-height: 500px; }
 
+  /* push list down by the logo overhang + 1 rem breathing-room */
   nav ul{
-    flex-direction:column;
-    gap:1rem;
-    padding:1rem 0;
-    text-align:center;
+    flex-direction: column;
+    gap: 1rem;
+    padding: calc(var(--logo-overhang) + 1rem) 0 1rem;
+    text-align: center;
   }
 }
 

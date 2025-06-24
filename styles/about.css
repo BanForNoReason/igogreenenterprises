@@ -1,0 +1,111 @@
+/* ───── VARIABLES (easy tweaks) ───── */
+:root{
+  --max-page: 1200px;
+  --grid-gap: clamp(1rem, 3vw, 2rem);
+  --clr-accent: #b89759;
+}
+
+/* ───────────────────────────────────
+   SHARED BACKDROP  (hero + intro)
+   ─────────────────────────────────── */
+.about-hero-wrap{
+  background:url("/public/images/about-hero.webp") center/cover no-repeat;
+  position:relative; color:#fff;
+}
+.about-hero-wrap::before{           /* overlay for readability */
+  content:""; position:absolute; inset:0;
+  background:rgba(0,0,0,.55); z-index:0;
+}
+.about-hero, .about-intro{ position:relative; z-index:1; }
+
+/* ─── HERO ───────────────────────── */
+.about-hero{
+  min-height:38vh; display:flex; align-items:center; justify-content:center;
+  text-align:center; padding:4rem 1rem 2.5rem;
+}
+.about-hero h1{
+  font-size:clamp(1.8rem,5vw,3rem);
+  text-shadow:2px 2px 4px rgba(0,0,0,.5);
+}
+
+/* ─── TWO-COLUMN INTRO ───────────── */
+.about-intro{
+  max-width:var(--max-page); margin:0 auto;
+  display:grid; grid-template-columns:1fr 1fr; gap:var(--grid-gap);
+  align-items:center; padding:0 clamp(1rem,4vw,2rem) 3rem;
+}
+.intro-img img{
+  width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,.15);
+}
+.about-intro h2,
+.about-intro p,
+.about-intro li{ color:#f0f0f0; }
+.intro-list{ margin:1rem 0 0; padding-left:0; line-height:1.6; }
+.intro-list li{ list-style:none; margin-bottom:.5rem; }
+.intro-list li::before{ content:"✓ "; color:var(--clr-accent); }
+
+/* ─── VALUE CARDS ────────────────── */
+.about-values{
+  background:#f7f7f5;
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:var(--grid-gap);
+  padding:clamp(2rem,6vw,3rem);
+  text-align:center;
+}
+.about-values article{
+  background:#fff; border-radius:12px; padding:1.5rem;
+  box-shadow:0 3px 10px rgba(0,0,0,.07);
+}
+.about-values img{ width:64px; margin-bottom:1rem; }
+.about-values h3{ margin:0 0 .5rem; color:#283618; }
+
+/* ─── SERVICE AREA MAP ───────────── */
+.about-area{ text-align:center; padding:clamp(2rem,5vw,3rem); }
+.about-area h2{ margin-bottom:1.25rem; }
+.about-area img{
+  width:100%; max-width:960px; border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,.12);
+}
+
+/* ─── tighten gallery on phones ─── */
+.about-gallery{
+  display:grid;
+  /* desktop / tablet: 3-up or 2-up just like before */
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:clamp(.75rem,2vw,1.5rem);
+  max-width:1200px;
+  margin:0 auto;
+  padding:clamp(1rem,4vw,2rem);
+}
+
+/* never let an image grow beyond its cell */
+.about-gallery img{
+  width:100%;
+  height:auto;
+  max-width:100%;
+  aspect-ratio:4/3;
+  object-fit:cover;
+  border-radius:12px;
+  box-shadow:0 3px 10px rgba(0,0,0,.1);
+}
+
+/* ───────────────────────────────────
+   MOBILE overrides  (≤ 600 px)
+   ─────────────────────────────────── */
+@media(max-width:600px){
+
+  /* stack intro */
+  .about-intro{ grid-template-columns:1fr; }
+  .intro-img{ order:-1; margin-bottom:1rem; }
+
+  /* shrink hero padding */
+  .about-hero{ padding:3rem 1rem 1.5rem; }
+  .about-hero h1{ font-size:clamp(1.4rem,9vw,2rem); }
+
+  .about-gallery{
+    grid-template-columns:1fr;
+    gap:1rem;           /* slightly bigger gap looks nicer */
+  }
+  /* value cards single column when space is tight */
+  .about-values{ grid-template-columns:1fr; }
+}
