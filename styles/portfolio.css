@@ -1,54 +1,87 @@
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    padding: 2rem 4vw; /* offset sides for all screens */
-    box-sizing: border-box;
-  }
-  
-  .category-card {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    text-decoration: none;
-    background: #f8f8f8;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  }
-  
-  .category-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .category-card img {
-    width: 100%;
-    height: auto;
-    display: block;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-  }
-  
-  .category-card h3 {
-    margin: 0;
-    padding: 1rem;
-    color: #333;
-    font-size: 1.1rem;
-  }
-  
-/* ─── Mobile: 2-up grid ─────────────────────────── */
-@media (max-width:600px){
+/* ──────────────────────────────────────────────
+   Portfolio page
+   (existing card styles kept -- new layout rules added)
+───────────────────────────────────────────────── */
+
+/* ---------- optional centred wrapper ---------- */
+.page-container{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 clamp(1rem,4vw,2rem);   /* fluid side-gutters */
+  box-sizing:border-box;
+}
+
+/* ---------- heading block ---------- */
+.portfolio-header{
+  margin:clamp(2rem,5vw,3rem) 0 2rem;
+}
+.portfolio-header h1{
+  margin:0 0 .65rem;
+  font-size:clamp(1.8rem,4.5vw,2.4rem);
+}
+.portfolio-header p{
+  margin:0;
+  font-size:clamp(1rem,2.3vw,1.15rem);
+  color:#555;
+}
+
+/* ---------- CARD GRID  (your original rules) ---------- */
+.portfolio-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:2rem;
+  padding:2rem 4vw;
+  box-sizing:border-box;
+}
+
+.category-card{
+  display:flex;
+  flex-direction:column;
+  text-align:center;
+  text-decoration:none;
+  background:#f8f8f8;
+  border-radius:8px;
+  overflow:hidden;
+  transition:transform .3s ease;
+  box-shadow:0 4px 12px rgba(0,0,0,.05);
+}
+.category-card:hover{ transform:translateY(-5px); }
+
+.category-card img{
+  width:100%;
+  aspect-ratio:4/3;
+  object-fit:cover;
+}
+.category-card h3{
+  margin:0;
+  padding:1rem;
+  color:#333;
+  font-size:1.1rem;
+}
+
+/* ---------- NEW: fine-tuned break-points ---------- */
+@media (min-width:992px){   /* desktops → 3 per row */
   .portfolio-grid{
-    /* two equal columns that shrink to fit the viewport */
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;                 /* tighten gap so both cards fit comfortably */
+    grid-template-columns:repeat(3,1fr);
   }
 }
 
-/* Extra-small phones (≤ 360 px) → return to one column so nothing overflows */
-@media (max-width:360px){
+@media (max-width:991px) and (min-width:600px){ /* tablets → 2 per row */
   .portfolio-grid{
-    grid-template-columns: 1fr;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:1.5rem;
+  }
+}
+
+@media (max-width:599px){   /* phones → still 2 per row, tighter gap */
+  .portfolio-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:1rem;
+  }
+}
+
+@media (max-width:360px){   /* very small phones → single column */
+  .portfolio-grid{
+    grid-template-columns:1fr;
   }
 }

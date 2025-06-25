@@ -124,3 +124,54 @@
     bottom:.75rem;
   }
 }
+
+/* ─── back-to-portfolio button - modern chip ───────────────────────── */
+.back-btn{
+  position:relative;             /* normal flow by default            */
+  display:inline-flex;
+  align-items:center;
+  gap:.45rem;
+
+  /* look & feel */
+  padding:.45rem 1.05rem .45rem .9rem;
+  font-size:.95rem;
+  font-weight:600;
+  line-height:1;
+  color:#283618;
+  background:rgba(40,54,24,.05);         /* very subtle brand tint      */
+  border:2px solid rgba(40,54,24,.15);   /* thin outline                */
+  border-radius:9999px;                  /* pill / chip                 */
+  text-decoration:none;
+  backdrop-filter:saturate(180%) blur(2px); /* slight glassy feel       */
+  transition:background .25s,border-color .25s,transform .25s;
+}
+
+.back-btn::before{                        /* arrow icon via pseudo-el.  */
+  content:"\2190";                        /* Unicode left arrow         */
+  font-size:1.1rem;
+  line-height:1;
+}
+
+.back-btn:hover{
+  background:#283618;                     /* solid brand fill on hover  */
+  color:#fff;
+  border-color:#283618;
+  transform:translateY(-1px);             /* tiny lift                  */
+}
+
+.back-btn:active{ transform:translateY(0); }
+
+/* fixed on desktop */
+@media (min-width:768px){
+  .back-btn{
+    position:fixed;
+    top:92px;                 /* header (≈80) + breathing room      */
+    left:1rem;
+    z-index:1200;
+  }
+}
+
+/* normal flow + room on phones */
+@media (max-width:767px){
+  .back-btn{ margin:1rem 0 0 4vw; }
+}
