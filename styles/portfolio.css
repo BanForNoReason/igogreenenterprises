@@ -1,7 +1,57 @@
-/* ──────────────────────────────────────────────
-   Portfolio page
-   (existing card styles kept -- new layout rules added)
-───────────────────────────────────────────────── */
+/* ─────────────────────────────────────────────
+   1.  Accent underline on the heading block
+───────────────────────────────────────────────*/
+.portfolio-header{
+  position:relative;                     /* for ::after positioning  */
+}
+.portfolio-header::after{                /* thin centred gold bar    */
+  content:"";
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:-1.25rem;
+  width:84px;                            /* width of the bar         */
+  height:4px;
+  background:#b89759;                    /* brand accent colour      */
+  border-radius:4px;
+}
+
+/* ─────────────────────────────────────────────
+   2.  Fade-up stagger animation on cards
+───────────────────────────────────────────────*/
+@keyframes fadeUpCard{
+  0%  { opacity:0; transform:translateY(22px); }
+  100%{ opacity:1; transform:translateY(0);    }
+}
+
+.category-card{
+  /* keep your existing look … */
+  display:flex; flex-direction:column; text-align:center;
+  background:#f8f8f8; border-radius:8px; overflow:hidden;
+  box-shadow:0 4px 12px rgba(0,0,0,.05);
+  transition:transform .3s ease;
+
+  /* …and add the animation */
+  animation:fadeUpCard .7s ease-out both;
+}
+
+/* stagger the cards with tiny delays */
+.category-card:nth-child(1){ animation-delay:.05s; }
+.category-card:nth-child(2){ animation-delay:.10s; }
+.category-card:nth-child(3){ animation-delay:.15s; }
+.category-card:nth-child(4){ animation-delay:.20s; }
+.category-card:nth-child(5){ animation-delay:.25s; }
+.category-card:nth-child(6){ animation-delay:.30s; }
+
+/* ─────────────────────────────────────────────
+   3.  Slightly deeper lift on hover (optional)
+───────────────────────────────────────────────*/
+.category-card:hover{
+  transform:translateY(-8px);            /* was -5px                 */
+}
+
+/* (the rest of your existing break-points and rules stay untouched) */
+
 
 /* ---------- optional centred wrapper ---------- */
 .page-container{

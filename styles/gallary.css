@@ -1,9 +1,95 @@
-/* ===== gallery grid ===== */
-.gallery-header{
-  padding:2rem 4vw;
+/* ─── descriptive panel ─────────────────────────────────────── */
+.gallery-description{
+  max-width: 920px;
+  margin: 0 auto 2.75rem;             /* more air below the panel  */
+  padding: 2.25rem 3rem 2.75rem;      /* slightly roomier          */
+
+  /* body copy */
+  text-align: left;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444;
+
+  /* flair */
+  position: relative;
+  background: linear-gradient(135deg,#ffffff 0%,#f9f9f7 100%);
+  border: 1px solid rgba(0,0,0,.08);          /* NEW thin outline      */
+  border-radius: 14px;
+  box-shadow:
+      0 8px 28px rgba(0,0,0,.06),             /* NEW layered shadow    */
+      0 2px  6px rgba(0,0,0,.08);
+  overflow: hidden;
+  animation: fadeUp .7s ease-out both;
+}
+
+/* gold accent bar */
+.gallery-description::before{
+  content:"";
+  position:absolute;
+  top:0; left:0;
+  width:100%;
+  height:6px;
+  background:#b89759;
+  border-radius:14px 14px 0 0;
+}
+
+/* heading inside panel */
+.gallery-description h2{
+  margin:0 0 1rem;
+  font-size:clamp(1.25rem,3.5vw,1.65rem);
+  color:#283618;
   text-align:center;
 }
 
+/* bullet list with custom ticks */
+.gallery-description ul{ list-style:none; padding:0; margin:1rem 0 0; }
+.gallery-description li{
+  position:relative;
+  padding-left:1.65rem;
+  margin:.45rem 0;
+}
+.gallery-description li::before{
+  content:"\2713";
+  position:absolute; left:0; top:0;
+  font-weight:600; color:#b89759;
+}
+
+/* two-column layout on wide screens */
+@media (min-width:880px){
+  .gallery-description{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    column-gap:2.5rem;
+  }
+  .gallery-description h2{ grid-column:1 / -1; }
+}
+
+/* slightly tighter body copy on phones */
+@media (max-width:600px){
+  .gallery-description{ font-size:.95rem; }
+}
+
+/* subtle appear-from-below */
+@keyframes fadeUp{
+  0%{ opacity:0; transform:translateY(20px); }
+  100%{ opacity:1; transform:translateY(0); }
+}
+
+/* ─── page headline polish ───────────────────────────────────── */
+.gallery-header{ padding:2rem 4vw; text-align:center; }
+
+.gallery-header h1{
+  font-size:clamp(2rem,4.3vw,2.6rem);
+  margin:0 0 2.25rem;        /* extra gap above description card */
+  line-height:1.2;
+  letter-spacing:-.5px;
+}
+
+@media (max-width:600px){
+  .gallery-header h1{ margin-bottom:1.4rem; }
+}
+
+/* ─── gallery grid ───────────────────────────────────────────── */
 .gallery-container{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -12,52 +98,63 @@
   box-sizing:border-box;
 }
 
+/* unified card styling + fixed aspect-ratio */
 .image-card{
+  /* original “card” look */
   background:#f5f5f5;
   border-radius:8px;
-  overflow:hidden;
   box-shadow:0 2px 8px rgba(0,0,0,.1);
   cursor:pointer;
   transition:transform .2s ease;
+
+  /* new: equal heights for every thumb */
+  aspect-ratio:4 / 3;          /* change to 3/4 if you prefer taller */
+  overflow:hidden;             /* clip anything that overflows       */
+  display:block;               /* makes the aspect-ratio rule apply  */
 }
-.image-card img{
-  width:100%; aspect-ratio:1/1; object-fit:cover;
-  border-radius:4px;
-}
+
+/*  subtle lift on hover (unchanged) */
 .image-card:hover{ transform:scale(1.02); }
 
-.lightbox{
-  display:none;                   /* hidden by default */
-  position:fixed;
-  z-index:9999;
-  inset:0;                        /* shorthand: top/right/bottom/left = 0 */
-  background:rgba(0,0,0,.85);
+/* image always fills the card without distortion */
+.image-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;            /* centre-crop to fill the box        */
+}
 
-  /* prepare flex layout for when JS makes it visible */
+/* two cards per row on mobile */
+@media(max-width:600px){
+  .gallery-container{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:1rem;
+  }
+}
+@media(max-width:360px){
+  .gallery-container{ grid-template-columns:1fr; }
+}
+
+/* ─── light-box overlay ─────────────────────────────────────── */
+.lightbox{
+  display:none;
+  position:fixed; 
+  inset:0;
+  z-index:9999;
+  background:rgba(0,0,0,.85);
   flex-direction:column;
   justify-content:center;
   align-items:center;
 }
+.lightbox-img{ max-width:90%; max-height:80vh; border-radius:8px; }
 
-.lightbox-img{
-  max-width:90%; max-height:80vh;
-  border-radius:8px;
-}
-
-/* nicer circular controls */
+/* circular controls */
 .lightbox .close,
 .lightbox .prev,
 .lightbox .next{
-  width:50px; 
-  height:50px; 
-  border-radius:50%;
-  display:flex; 
-  justify-content:center; 
-  align-items:center;
+  width:50px; height:50px; border-radius:50%;
+  display:flex; justify-content:center; align-items:center;
   background:rgba(255,255,255,.9);
-  color:#283618; 
-  font-size:1.8rem; 
-  line-height:1;
+  color:#283618; font-size:1.8rem; line-height:1;
   box-shadow:0 2px 6px rgba(0,0,0,.3);
   transition:background .25s;
   cursor:pointer;
@@ -66,112 +163,69 @@
 .lightbox .prev:hover,
 .lightbox .next:hover{ background:#fff; }
 
-/* place the buttons */
+/* positions */
 .lightbox .close{
   position:fixed; top:1rem; right:1rem;
   width:44px; height:44px; font-size:1.5rem;
-  z-index:10002;
 }
 .lightbox .prev,
 .lightbox .next{
   position:fixed; top:50%; transform:translateY(-50%);
-  z-index:10002; padding:0;          /* remove old padding */
+  padding:0;
 }
 .lightbox .prev{ left:1.25rem; }
 .lightbox .next{ right:1.25rem; }
 
-/* ===== responsive tweaks ===== */
 @media(max-width:600px){
-  /* two cards per row */
-  .gallery-container{ grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; }
-
-  /* smaller controls */
   .lightbox .close,
   .lightbox .prev,
   .lightbox .next{
     width:40px; height:40px; font-size:1.4rem;
-    cursor:pointer;
   }
   .lightbox .prev{ left:.5rem; }
   .lightbox .next{ right:.5rem; }
 }
 
-@media(max-width:360px){
-  .gallery-container{ grid-template-columns:1fr; }   /* single column */
-}
-
-/* put this at the very end of gallary.css  ───────────────────── */
+/* index badge */
 .lightbox-index{
-  position:fixed;
-  bottom:1.25rem;
-  left:50%;
+  position:fixed; bottom:1.25rem; left:50%;
   transform:translateX(-50%);
-  z-index:10002;                  /* same layer as buttons */
-
-  /* look / feel */
-  font-size:1.05rem;
-  color:#fff;
+  font-size:1.05rem; color:#fff;
   background:rgba(0,0,0,.65);
-  padding:.35rem .9rem;
-  border-radius:12px;
+  padding:.35rem .9rem; border-radius:12px;
   box-shadow:0 2px 5px rgba(0,0,0,.35);
+  z-index:10002;
 }
-
-/* phones: slightly smaller badge */
 @media(max-width:600px){
-  .lightbox-index{
-    font-size:.95rem;
-    bottom:.75rem;
-  }
+  .lightbox-index{ font-size:.95rem; bottom:.75rem; }
 }
 
-/* ─── back-to-portfolio button - modern chip ───────────────────────── */
+/* ─── back-to-portfolio button ──────────────────────────────── */
 .back-btn{
-  position:relative;             /* normal flow by default            */
-  display:inline-flex;
-  align-items:center;
-  gap:.45rem;
-
-  /* look & feel */
+  position:relative;
+  display:inline-flex; align-items:center; gap:.45rem;
   padding:.45rem 1.05rem .45rem .9rem;
-  font-size:.95rem;
-  font-weight:600;
-  line-height:1;
+  font-size:.95rem; font-weight:600; line-height:1;
   color:#283618;
-  background:rgba(40,54,24,.05);         /* very subtle brand tint      */
-  border:2px solid rgba(40,54,24,.15);   /* thin outline                */
-  border-radius:9999px;                  /* pill / chip                 */
+  background:rgba(40,54,24,.05);
+  border:2px solid rgba(40,54,24,.15);
+  border-radius:9999px;
   text-decoration:none;
-  backdrop-filter:saturate(180%) blur(2px); /* slight glassy feel       */
+  backdrop-filter:saturate(180%) blur(2px);
   transition:background .25s,border-color .25s,transform .25s;
 }
-
-.back-btn::before{                        /* arrow icon via pseudo-el.  */
-  content:"\2190";                        /* Unicode left arrow         */
-  font-size:1.1rem;
-  line-height:1;
-}
-
+.back-btn::before{ content:"\2190"; font-size:1.1rem; }
 .back-btn:hover{
-  background:#283618;                     /* solid brand fill on hover  */
-  color:#fff;
-  border-color:#283618;
-  transform:translateY(-1px);             /* tiny lift                  */
+  background:#283618; color:#fff; border-color:#283618;
+  transform:translateY(-1px);
 }
-
 .back-btn:active{ transform:translateY(0); }
 
-/* fixed on desktop */
 @media (min-width:768px){
   .back-btn{
-    position:fixed;
-    top:92px;                 /* header (≈80) + breathing room      */
-    left:1rem;
-    z-index:1200;
+    position:fixed; top:92px; left:1rem; z-index:1200;
   }
 }
-
-/* normal flow + room on phones */
 @media (max-width:767px){
   .back-btn{ margin:1rem 0 0 4vw; }
 }
