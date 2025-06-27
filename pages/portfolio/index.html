@@ -135,17 +135,17 @@
   </div>
 </footer>
 
-    <script>
-      // Keep hamburger toggle logic
-      const hamburger = document.getElementById('hamburger');
-      const navMenu = document.querySelector('header nav');
-    
-      if (hamburger && navMenu) {
-        hamburger.addEventListener('click', () => {
-          hamburger.classList.toggle('active');
-          navMenu.classList.toggle('active');
-        });
-      }
-    </script>
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const nav       = document.querySelector('header nav');
+  const body      = document.body;
+
+  hamburger?.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    nav.classList.toggle('active');
+    body.classList.toggle('nav-open');   // stop background scroll
+  });
+</script>
+
 </body>
 </html>

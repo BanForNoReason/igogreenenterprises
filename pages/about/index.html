@@ -15,6 +15,11 @@
     <link rel="manifest" href="/public/site.webmanifest">
     <link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon">
 
+    <link rel="preload"
+      as="image"
+      href="/public/images/about-hero.webp"
+      type="image/webp">
+
 
     <!-- Breadcrumb Schema -->
     <script type="application/ld+json">
@@ -79,8 +84,7 @@
   <!-- existing two-column intro -->
   <section class="about-intro">
     <figure class="intro-img">
-      <img src="/public/images/about/crew-placeholder.jpg"
-           alt="igogreenenterprise installation crew">
+<!-- add image here maybe -->
     </figure>
 
     <div class="intro-text">
@@ -104,7 +108,7 @@
 <!-- ─── OUR VALUES ─── -->
 <section class="about-values">
   <article>
-    <img src="/public/icons/precision.svg" alt="Percise Icon" aria-hidden="true">
+    <img src="/public/icons/ruler-icon.svg" alt="Percise Icon" aria-hidden="true">
     <h3>Precision</h3>
     <p>Laser-measured layouts, clean silicone lines, and
        millimetre-perfect edges—details that last.</p>
@@ -128,18 +132,16 @@
 <!-- ─── WHERE WE WORK ─── -->
 <section class="about-area">
   <h2>Serving the Greater Seattle Area</h2>
-  <img src="/public/images/about/map-placeholder.jpg"
-       alt="Map highlighting Seattle, Bellevue, Kirkland, Snoqualmie, Cle Elum ">
 </section>
 
 <!-- ─── PROJECT GALLERY (3-up) ─── -->
 <section class="about-gallery">
-  <img src="/public/images/about/gallery1.jpg"
-       alt="Custom glass rail at Lake Washington property">
-  <img src="/public/images/about/gallery2.jpg"
-       alt="Wall-to-wall gym mirrors in Bellevue studio">
-  <img src="/public/images/about/gallery3.jpg"
-       alt="Frameless shower in Kirkland hillside home">
+  <img src="/public/images/showerdoor-styles/glass-rails-walls/50.JPG"
+       alt="Custom glass rail at Seattle town homes">
+  <img src="/public/images/showerdoor-styles/glass-rails-walls/10.JPG"
+       alt="Glass rail at Lake Washington house">
+  <img src="/public/images/showerdoor-styles/glass-rails-walls/91.JPG"
+       alt="Custom glass rail for multi million dollar home in madaina bellevue ">
 </section>
 
 
@@ -170,18 +172,29 @@
   </div>
 </footer>
 
-    <script>
-      // Keep hamburger toggle logic
-      const hamburger = document.getElementById('hamburger');
-      const navMenu = document.querySelector('header nav');
-    
-      if (hamburger && navMenu) {
-        hamburger.addEventListener('click', () => {
-          hamburger.classList.toggle('active');
-          navMenu.classList.toggle('active');
-        });
-      }
-    </script>
+<script>
+  /* hero image decode → reveal */
+  document.addEventListener('DOMContentLoaded', () => {
+    const heroURL = '/public/images/about-hero.webp';
+    const probe   = new Image();
+    probe.src     = heroURL;
+    probe.decode().catch(()=>{}).then(() => {
+      document.body.classList.add('hero-ready');
+    });
+  });
+
+  /* menu toggle + scroll-lock */
+  const hamburger = document.getElementById('hamburger');
+  const nav       = document.querySelector('header nav');
+  const body      = document.body;
+
+  hamburger?.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    nav.classList.toggle('active');
+    body.classList.toggle('nav-open');
+  });
+</script>
+
     
 </body>
 </html>

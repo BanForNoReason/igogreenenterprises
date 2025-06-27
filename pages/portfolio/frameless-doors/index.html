@@ -108,69 +108,69 @@
 </footer>
 
   <script>
-const imageCount = 26;
-const thumbnailFolder = "/public/images/showerdoor-styles/frameless/thumbnails/";
-const fullImageFolder = "/public/images/showerdoor-styles/frameless/";
-const images = [];
+  /* page-specific settings ----------------------------------- */
+  const imageCount  = 26;   /* number of images in this gallery */
+  const thumbFolder = "/public/images/showerdoor-styles/frameless/thumbnails/";
+  const fullFolder  = "/public/images/showerdoor-styles/frameless/";
+  /* ---------- 1. CACHE DOM NODES ----------------------------------- */
+  const gallery       = document.getElementById("gallery");
+  const lightbox      = document.getElementById("lightbox");
+  const lightboxImg   = document.getElementById("lightbox-img");
+  const lightboxIndex = document.getElementById("lightbox-index");
 
-const galleryContainer = document.getElementById("gallery");
+  /* ---------- 2. BUILD THUMBNAILS & IMAGE ARRAY ------------------- */
+  const images = [];
+  for (let i = 1; i <= imageCount; i++) {
+    images.push(`${fullFolder}${i}.JPG`);
 
-for (let i = 1; i <= imageCount; i++) {
-  const fullImagePath = `${fullImageFolder}${i}.JPG`;
-  const thumbnailPath = `${thumbnailFolder}${i}.webp`;
-  images.push(fullImagePath);
+    const card = document.createElement("div");
+    card.className = "image-card";
+    card.onclick   = () => openLightbox(i - 1);
 
-  const div = document.createElement("div");
-  div.classList.add("image-card");
-  div.onclick = () => openLightbox(i - 1);
+    const img = document.createElement("img");
+    img.src = `${thumbFolder}${i}.webp`;
+    img.alt = `Gallery image ${i}`;
+    if (i > 30) img.loading = "lazy";
 
-  const img = document.createElement("img");
-  img.src = thumbnailPath;
-  img.alt = `Glass Rails ${i}`;
-  if (i > 30) {
-    img.loading = "lazy";
+    card.appendChild(img);
+    gallery.appendChild(card);
   }
 
-  div.appendChild(img);
-  galleryContainer.appendChild(div);
-}
+  /* ---------- 3. LIGHTBOX CONTROLS -------------------------------- */
+  let currentIndex = 0;
+  function updateCounter(){
+    lightboxIndex.textContent = `${currentIndex + 1} of ${images.length}`;
+  }
+  function openLightbox(idx){
+    currentIndex  = idx;
+    lightboxImg.src = images[idx];
+    updateCounter();
+    lightbox.style.display = "flex";
+  }
+  function closeLightbox(){ lightbox.style.display = "none"; }
+  function changeSlide(step){
+    currentIndex = (currentIndex + step + images.length) % images.length;
+    lightboxImg.src = images[currentIndex];
+    updateCounter();
+  }
+  window.addEventListener("keydown", e => {
+    if (e.key === "Escape")      closeLightbox();
+    if (e.key === "ArrowRight")  changeSlide(1);
+    if (e.key === "ArrowLeft")   changeSlide(-1);
+  });
 
-    let currentIndex = 0;
+  /* ---------- 4. HAMBURGER  +  SCROLL-LOCK ------------------------ */
+  const hamburger = document.getElementById("hamburger");
+  const nav       = document.querySelector("header nav");
+  const body      = document.body;
 
-    function openLightbox(index) {
-      currentIndex = index;
-      document.getElementById('lightbox-img').src = images[index];
-      document.getElementById('lightbox-index').innerText = `${index + 1} of ${images.length}`;
-      document.getElementById('lightbox').style.display = "flex";
-    }
+  hamburger?.addEventListener("click", () => {
+    hamburger.classList.toggle("active");   // animate icon
+    nav.classList.toggle("active");         // show / hide overlay
+    body.classList.toggle("nav-open");      // lock / unlock page scroll
+  });
+</script>
 
-    function closeLightbox() {
-      document.getElementById('lightbox').style.display = "none";
-    }
-
-    function changeSlide(direction) {
-      currentIndex += direction;
-      if (currentIndex < 0) currentIndex = images.length - 1;
-      if (currentIndex >= images.length) currentIndex = 0;
-      document.getElementById('lightbox-img').src = images[currentIndex];
-      document.getElementById('lightbox-index').innerText = `${currentIndex + 1} of ${images.length}`;
-    }
-
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowRight') changeSlide(1);
-      if (e.key === 'ArrowLeft') changeSlide(-1);
-    });
-
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.querySelector('header nav');
-    if (hamburger && navMenu) {
-      hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-      });
-    }
-  </script>
 
 </body>
 </html>

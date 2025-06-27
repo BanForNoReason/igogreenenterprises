@@ -109,3 +109,13 @@
   /* value cards single column when space is tight */
   .about-values{ grid-template-columns:1fr; }
 }
+
+@media (prefers-reduced-motion:no-preference){
+  .about-hero-wrap{
+    opacity:0;                       /* start hidden     */
+    transition:opacity .35s ease-out;
+  }
+  body.hero-ready .about-hero-wrap{
+    opacity:1;                       /* show after decode */
+  }
+}

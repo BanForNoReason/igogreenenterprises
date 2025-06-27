@@ -1,3 +1,38 @@
+
+/* 1. keyframes */
+@keyframes fadeUpCard{
+  0%  { opacity:0; transform:translateY(22px); }
+  100%{ opacity:1; transform:translateY(0);    }
+}
+
+/* 2. apply the animation */
+.service-card{
+  /* existing visual styles remain intact */
+  animation:fadeUpCard .7s ease-out both;
+}
+
+/* 3. stagger each card slightly */
+.service-card:nth-child(1){ animation-delay:.05s; }
+.service-card:nth-child(2){ animation-delay:.10s; }
+.service-card:nth-child(3){ animation-delay:.15s; }
+.service-card:nth-child(4){ animation-delay:.20s; }
+.service-card:nth-child(5){ animation-delay:.25s; }
+.service-card:nth-child(6){ animation-delay:.30s; }
+
+/* 4. (optional) deepen the hover lift a bit to match portfolio feel */
+@media(hover:hover){
+  .service-card:hover{ transform:translateY(-6px); }
+}
+
+/* 5. accessibility – disable motion for users who prefer reduced-motion */
+@media (prefers-reduced-motion:reduce){
+  .service-card{
+    animation:none !important;
+    transform:none !important;
+  }
+}
+
+
 :root{
   --max-page: 1200px;
   --grid-gap: clamp(.75rem,2vw,1.5rem);
@@ -6,7 +41,9 @@
 
 /* ─── HERO ───────────────────────── */
 .services-hero{
-  background:url("/public/images/servic-hero.webp") center/cover no-repeat;
+  background:
+    url("/public/images/servic-hero.webp") center/cover no-repeat,
+    #2d3a1a; 
   color:#fff; text-align:center;
   position:relative; padding:6rem 1rem 4rem;
 }
@@ -65,4 +102,14 @@
   .service-grid{
     grid-template-columns:1fr;
   }
+}
+
+/* –––  fade only if user allows motion ––– */
+@media (prefers-reduced-motion:no-preference){
+  .services-hero{
+    opacity:0;                       /* start invisible   */
+    transition:opacity .6s ease-out;
+  }
+  /* becomes visible the moment decode() resolves */
+  body.hero-ready .services-hero{ opacity:1; }
 }

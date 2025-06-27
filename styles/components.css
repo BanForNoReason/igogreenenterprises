@@ -1,12 +1,16 @@
+/* ================================================================
+   COMPONENTS.CSS
+   (header, nav, footer, hamburgers, global vars)
+   ================================================================ */
+
 :root{
-  --bar-h: 80px;          /* height of the dark bar itself   */
-  --logo-h: 180px;        /* total visible logo height       */
-  --logo-overhang: calc( (var(--logo-h) - var(--bar-h)) / 2 );
+  --bar-h: 80px;          /* height of fixed header bar       */
+  --logo-h: 180px;        /* total visible logo height        */
+  --logo-overhang: calc((var(--logo-h) - var(--bar-h)) / 2);
 }
 
-/* ─────────── Global styling ─────────── */
-html,
-body{
+/* ─────────── Global / layout ─────────── */
+html,body{
   height:100%;
   margin:0;
   padding:0;
@@ -17,80 +21,48 @@ body{
   font-family:Arial,Helvetica,sans-serif;
   box-sizing:border-box;
 }
-main{ flex:1; padding-top:80px; }  /* room for fixed header */
+main{ flex:1; padding-top:var(--bar-h); }   /* keep content below header */
 
-/* ─────────── Header ─────────── */
+/* ─────────── Header ------------------------------------------------ */
 header{
   width:100%;
   padding-inline:clamp(0.75rem,4vw,2rem);
   background:#283618;
   color:#fff;
-  display:flex;
-  align-items:center;
+  display:flex; align-items:center;
   position:fixed; top:0; left:0;
+  height:var(--bar-h);
   z-index:1300;
-  height: var(--bar-h);
-  overflow: visible;
+  overflow:visible;
 }
+.header-hidden{ visibility:hidden !important; pointer-events:none !important; }
 
-/* hide header whenever the class is applied */
-.header-hidden{
-  /* use both properties to be 100 % sure */
-  visibility:hidden !important;
-  pointer-events:none !important;
-}
-
-
-.logo{
-  position:relative;
-  height:100%;
-}
-
-/* oversize the image and centre it vertically */
+.logo{ position:relative; height:100%; }
 .logo img{
-  height:180px;                /* ← bigger than bar (tweak)       */
-  width:auto;
-  position:absolute;           /* pull it out of normal flow      */
-  top:50%;                     /* centre vertically               */
-  transform:translateY(-50%);
-  /* optional: add a bit of horizontal breathing-room */
-  margin-left: -45px;           /* adjust if it nudges the nav     */
+  height:var(--logo-h); width:auto;
+  position:absolute; top:50%; transform:translateY(-50%);
+  margin-left:-45px;                       /* tweak if it nudges links */
 }
 
-/* header .logo img{
-  height:clamp(48px,8vw,80px);
-  width:auto;
-} */
-
-/* inner container centres & caps width */
 .header-inner{
-  max-width:1200px;
-  width:100%;
-  margin-inline:auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;      /* logo left, nav right  */
+  max-width:1200px; width:100%; margin-inline:auto;
+  display:flex; align-items:center; justify-content:space-between;
   padding-inline:clamp(0.75rem,4vw,2rem);
   gap:clamp(0.5rem,2vw,2rem);
 }
 
-/* ── Hamburger icon ── */
+/* ───── Hamburger icon ───── */
 .ham{
-  cursor:pointer;
-  -webkit-tap-highlight-color:transparent;
-  transition:transform .4s;
-  user-select:none;
-  display:none;                         /* shown at ≤ 992 px   */
-  z-index:1100;
+  cursor:pointer; -webkit-tap-highlight-color:transparent;
+  transition:transform .4s; user-select:none;
+  display:none;                             /* shown ≤ 992 px */
+  z-index:1400;                             /* above overlay */
 }
 .hamRotate.active  { transform:rotate(45deg); }
 .hamRotate180.active{ transform:rotate(180deg); }
 .line{
-  fill:none;
-  stroke:#fff;
-  stroke-width:5.5;
-  stroke-linecap:round;
-  transition:stroke-dasharray .4s,stroke-dashoffset .4s;
+  fill:none; stroke:#fff; stroke-width:5.5; stroke-linecap:round;
+  transition:stroke-dasharray .4s, stroke-dashoffset .4s;
 }
 .ham3 .top    { stroke-dasharray:40 130; }
 .ham3 .middle { stroke-dasharray:40 140; }
@@ -99,101 +71,129 @@ header{
 .ham3.active .middle { stroke-dashoffset:-102px; }
 .ham3.active .bottom { stroke-dasharray:110 205; stroke-dashoffset:-86px; }
 
-/* ── Navigation links ── */
-nav{
-  white-space:nowrap;                   /* keep words on one line */
-  padding-right:clamp(1rem,4vw,2rem);   /* ← new breathing-room  */
-}
-
+/* ───── Desktop navigation ───── */
+nav{ white-space:nowrap; padding-right:clamp(1rem,4vw,2rem); }
 nav ul{
-  list-style:none;
-  margin:0; padding:0;
-  display:flex;
-  gap:clamp(0.75rem,2vw,1.5rem);
+  list-style:none; margin:0; padding:0;
+  display:flex; gap:clamp(0.75rem,2vw,1.5rem);
 }
 nav ul li a{
-  color:#fff;
-  text-decoration:none;
-  font-weight:600;
-  position:relative;
+  color:#fff; text-decoration:none; font-weight:600; position:relative;
 }
 nav ul li a::after{
-  content:"";
-  position:absolute; left:0; bottom:-2px;
-  width:100%; height:2px;
-  background:#b89759;
-  opacity:0;
-  transition:opacity .3s ease;
+  content:""; position:absolute; left:0; bottom:-2px;
+  width:100%; height:2px; background:#b89759;
+  opacity:0; transition:opacity .3s ease;
 }
 nav ul li a:hover::after{ opacity:1; }
 
-/* ─────────── Break-points ─────────── */
-/* 1280 → 993 px: keep links but tighten a bit so they still fit */
+/* ───── Desktop break-point tweaks (links still inline) ───── */
 @media (max-width:1280px) and (min-width:993px){
   nav ul{ gap:clamp(0.5rem,1.2vw,1rem); }
   nav ul li a{ font-size:0.94rem; }
 }
 
-@media (max-width: 992px){
+/* ================================================================
+   MOBILE NAV OVERLAY (≤ 992 px)
+   ================================================================ */
+@media (max-width:992px){
+
   .ham{ display:block; }
 
+  /*  CLOSED state: 0-height (for slide-down anim) */
   nav{
-    position: fixed;
-    top: var(--bar-h);                 /* 80 px */
-    right: 0;
-    width: 100%;
-    max-height: 0;
-    overflow: hidden;
-    background: #283618;
-    transition: max-height .35s ease;
-    z-index: 1200;                    /* below header, above content */
+    position:fixed; inset:0;                /* full viewport */
+    width:100%; height:100vh;               /* but hidden by max-height */
+    max-height:0;
+    overflow:hidden;
+    background:rgba(40,54,24,.85);          /* dark green w/ opacity */
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    transition:max-height .35s ease;
+    z-index:1200;                           /* under hamburger */
+    display:flex; justify-content:center; align-items:center;
   }
-  nav.active{ max-height: 500px; }
+  /*  OPEN state */
+  nav.active{ max-height:100vh; }
 
-  /* push list down by the logo overhang + 1 rem breathing-room */
   nav ul{
-    flex-direction: column;
-    gap: 1rem;
-    padding: calc(var(--logo-overhang) + 1rem) 0 1rem;
-    text-align: center;
+    flex-direction:column;
+    gap:1.75rem;
+    padding:0;
+    text-align:center;
+  }
+
+  nav ul li a{
+    font-size:1.4rem; font-weight:700; letter-spacing:.5px;
+  }
+  nav ul li a::after{
+    content:""; position:absolute; left:50%; bottom:-6px;
+    width:0; height:2px; background:#b89759;
+    transform:translateX(-50%); transition:width .3s;
+  }
+  nav ul li a:hover::after{ width:60%; }
+
+  /* Tighter spacing on very low-height devices */
+  @media (max-height:550px){
+    nav ul{ gap:1.2rem; }
+    nav ul li a{ font-size:1.2rem; }
   }
 }
 
-/* ─────────── Footer (unchanged) ─────────── */
+/* ─────────── Footer ------------------------------------------------ */
 .site-footer{
-  background:#283618;
-  color:#fff;
-  padding:2rem 4vw 1rem;
-  font-size:0.95rem;
+  background:#283618; color:#fff; padding:2rem 4vw 1rem; font-size:0.95rem;
 }
 .footer-container{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:space-between;
-  gap:2rem;
-  max-width:1200px;
-  margin:0 auto;
+  display:flex; flex-wrap:wrap; justify-content:space-between;
+  gap:2rem; max-width:1200px; margin:0 auto;
 }
 .footer-about,.footer-links,.footer-contact{ flex:1 1 250px; }
 .footer-links ul{ list-style:none; padding:0; margin:0; }
 .footer-links ul li{ margin:0.5rem 0; }
 .footer-links ul li a{
-  color:#fff;
-  text-decoration:none;
-  transition:color .3s ease;
+  color:#fff; text-decoration:none; transition:color .3s ease;
 }
 .footer-links ul li a:hover{ color:#b89759; }
 .footer-bottom{
-  text-align:center;
-  margin-top:2rem;
+  text-align:center; margin-top:2rem;
   border-top:1px solid rgba(255,255,255,0.1);
-  padding-top:1rem;
-  font-size:0.85rem;
+  padding-top:1rem; font-size:0.85rem;
 }
-@media (max-width:768px){
-  .footer-container{
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
+@media(max-width:768px){
+  .footer-container{ flex-direction:column; align-items:center; text-align:center; }
+}
+
+/* ───  KEEP HAMBURGER / X VISIBLE OVER GLASS OVERLAY  ─────────── */
+@media (max-width:992px){
+
+  /* fix the button to the top-right corner, above the overlay */
+  .ham{
+    position:fixed;           /* instead of “inline” in header   */
+    top:1rem; right:1rem;
+    z-index:1500;             /* > nav (1200) so it’s clickable  */
   }
+
+  /* give the lines a brighter colour while nav is open */
+  .ham line{ stroke:#ffffff; }            /* normal (white)           */
+  .ham.active line{ stroke:#b89759; }     /* golden when it’s an X    }
+
+  /* optional: slight background for better contrast              */
+  .ham::after{
+    content:"";
+    position:absolute; inset:-8px;        /* bigger hit-area          */
+    border-radius:50%;
+    background:rgba(0,0,0,.25);           /* translucent dark circle  */
+    backdrop-filter:blur(4px);
+    -webkit-backdrop-filter:blur(4px);
+    opacity:0;
+    transition:opacity .3s;
+  }
+  .ham.active::after,
+  nav.active + .ham::after{ opacity:1; }   /* show circle when open    */
+}
+
+body.nav-open{
+  overflow:hidden;
+  height:100vh;     /* iOS fix */
 }

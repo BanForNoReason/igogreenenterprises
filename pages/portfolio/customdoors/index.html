@@ -113,64 +113,67 @@ const thumbnailFolder = "/public/images/showerdoor-styles/customdoor/thumbnails/
 const fullImageFolder = "/public/images/showerdoor-styles/customdoor/";
 const images = [];
 
-const galleryContainer = document.getElementById("gallery");
+  const galleryContainer = document.getElementById("gallery");
 
-for (let i = 1; i <= imageCount; i++) {
-  const fullImagePath = `${fullImageFolder}${i}.JPG`;
-  const thumbnailPath = `${thumbnailFolder}${i}.webp`;
-  images.push(fullImagePath);
+  for (let i = 1; i <= imageCount; i++) {
+    const fullImagePath = `${fullImageFolder}${i}.JPG`;
+    const thumbnailPath = `${thumbnailFolder}${i}.webp`;
+    images.push(fullImagePath);
 
-  const div = document.createElement("div");
-  div.classList.add("image-card");
-  div.onclick = () => openLightbox(i - 1);
+    const div = document.createElement("div");
+    div.classList.add("image-card");
+    div.onclick = () => openLightbox(i - 1);
 
-  const img = document.createElement("img");
-  img.src = thumbnailPath;
-  img.alt = `Glass Rails ${i}`;
-  if (i > 30) {
-    img.loading = "lazy";
+    const img = document.createElement("img");
+    img.src = thumbnailPath;
+    img.alt = `Gallery Image ${i}`;
+    if (i > 30) img.loading = "lazy";
+
+    div.appendChild(img);
+    galleryContainer.appendChild(div);
   }
 
-  div.appendChild(img);
-  galleryContainer.appendChild(div);
-}
+  /* ───── Lightbox controls ──────────────────────────────── */
+  let currentIndex = 0;
 
-    let currentIndex = 0;
+  function openLightbox(index) {
+    currentIndex = index;
+    document.getElementById('lightbox-img').src   = images[index];
+    document.getElementById('lightbox-index').textContent =
+      `${index + 1} of ${images.length}`;
+    document.getElementById('lightbox').style.display = "flex";
+  }
 
-    function openLightbox(index) {
-      currentIndex = index;
-      document.getElementById('lightbox-img').src = images[index];
-      document.getElementById('lightbox-index').innerText = `${index + 1} of ${images.length}`;
-      document.getElementById('lightbox').style.display = "flex";
-    }
+  function closeLightbox() {
+    document.getElementById('lightbox').style.display = "none";
+  }
 
-    function closeLightbox() {
-      document.getElementById('lightbox').style.display = "none";
-    }
+  function changeSlide(direction) {
+    currentIndex += direction;
+    if (currentIndex < 0) currentIndex = images.length - 1;
+    if (currentIndex >= images.length) currentIndex = 0;
+    document.getElementById('lightbox-img').src   = images[currentIndex];
+    document.getElementById('lightbox-index').textContent =
+      `${currentIndex + 1} of ${images.length}`;
+  }
 
-    function changeSlide(direction) {
-      currentIndex += direction;
-      if (currentIndex < 0) currentIndex = images.length - 1;
-      if (currentIndex >= images.length) currentIndex = 0;
-      document.getElementById('lightbox-img').src = images[currentIndex];
-      document.getElementById('lightbox-index').innerText = `${currentIndex + 1} of ${images.length}`;
-    }
+  window.addEventListener('keydown', e => {
+    if (e.key === 'Escape')      closeLightbox();
+    if (e.key === 'ArrowRight')  changeSlide(1);
+    if (e.key === 'ArrowLeft')   changeSlide(-1);
+  });
 
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowRight') changeSlide(1);
-      if (e.key === 'ArrowLeft') changeSlide(-1);
-    });
+  /* ───── Hamburger ⇄ glass-overlay toggle + scroll-lock ─── */
+  const hamburger = document.getElementById('hamburger');
+  const nav       = document.querySelector('header nav');
+  const body      = document.body;
 
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.querySelector('header nav');
-    if (hamburger && navMenu) {
-      hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-      });
-    }
-  </script>
+  hamburger?.addEventListener('click', () => {
+    hamburger.classList.toggle('active');  // animate lines
+    nav.classList.toggle('active');        // open / close overlay
+    body.classList.toggle('nav-open');     // lock / unlock page scroll
+  });
+</script>
 
 </body>
 </html>

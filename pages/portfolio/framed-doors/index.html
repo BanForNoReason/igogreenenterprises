@@ -112,74 +112,63 @@ const imageCount      = 4;   // ← change for each gallery
 const thumbFolder     = "/public/images/showerdoor-styles/framed/thumbnails/";
 const fullFolder      = "/public/images/showerdoor-styles/framed/";
 
-/* ---------- 2. CACHE DOM NODES ---------------------------------------- */
-const gallery         = document.getElementById("gallery");
-const lightbox        = document.getElementById("lightbox");
-const lightboxImg     = document.getElementById("lightbox-img");
-const lightboxIndex   = document.getElementById("lightbox-index");
-const headerNav       = document.querySelector("header nav");
-const hamburger       = document.getElementById("hamburger");
+  /* ---------- 1. CACHE DOM NODES ----------------------------------- */
+  const gallery       = document.getElementById("gallery");
+  const lightbox      = document.getElementById("lightbox");
+  const lightboxImg   = document.getElementById("lightbox-img");
+  const lightboxIndex = document.getElementById("lightbox-index");
 
-/* ---------- 3. BUILD THUMBNAILS + IMAGE ARRAY ------------------------- */
-const images = [];
-for (let i = 1; i <= imageCount; i++) {
-  images.push(`${fullFolder}${i}.JPG`);
+  /* ---------- 2. BUILD THUMBNAILS & IMAGE ARRAY ------------------- */
+  const images = [];
+  for (let i = 1; i <= imageCount; i++) {
+    images.push(`${fullFolder}${i}.JPG`);
 
-  const card = document.createElement("div");
-  card.className = "image-card";
-  card.onclick = () => openLightbox(i - 1);
+    const card = document.createElement("div");
+    card.className = "image-card";
+    card.onclick   = () => openLightbox(i - 1);
 
-  const img = document.createElement("img");
-  img.src = `${thumbFolder}${i}.webp`;
-  img.alt = `Framed shower door ${i}`;
-  if (i > 30) img.loading = "lazy";
+    const img = document.createElement("img");
+    img.src = `${thumbFolder}${i}.webp`;
+    img.alt = `Gallery image ${i}`;
+    if (i > 30) img.loading = "lazy";
 
-  card.appendChild(img);
-  gallery.appendChild(card);
-}
+    card.appendChild(img);
+    gallery.appendChild(card);
+  }
 
-/* make sure overlay starts hidden & counter blank */
-lightbox.style.display = "none";
-lightboxIndex.textContent = "";
-
-/* ---------- 4. LIGHTBOX CONTROLS -------------------------------------- */
-let currentIndex = 0;
-
-function updateCounter() {
-  lightboxIndex.textContent = `${currentIndex + 1} of ${imageCount}`;
-}
-
-function openLightbox(index) {
-  currentIndex      = index;
-  lightboxImg.src   = images[currentIndex];
-  updateCounter();
-  lightbox.style.display = "flex";
-}
-
-function closeLightbox() {
-  lightbox.style.display = "none";
-}
-
-function changeSlide(step) {
-  currentIndex = (currentIndex + step + imageCount) % imageCount;
-  lightboxImg.src = images[currentIndex];
-  updateCounter();
-}
-
-/* keyboard shortcuts */
-window.addEventListener("keydown", (e) => {
-  if (e.key === "Escape")      closeLightbox();
-  if (e.key === "ArrowRight")  changeSlide(1);
-  if (e.key === "ArrowLeft")   changeSlide(-1);
-});
-
-/* ---------- 5. HAMBURGER TOGGLE (unchanged) --------------------------- */
-if (hamburger && headerNav) {
-  hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("active");
-    headerNav.classList.toggle("active");
+  /* ---------- 3. LIGHTBOX CONTROLS -------------------------------- */
+  let currentIndex = 0;
+  function updateCounter(){
+    lightboxIndex.textContent = `${currentIndex + 1} of ${images.length}`;
+  }
+  function openLightbox(idx){
+    currentIndex  = idx;
+    lightboxImg.src = images[idx];
+    updateCounter();
+    lightbox.style.display = "flex";
+  }
+  function closeLightbox(){ lightbox.style.display = "none"; }
+  function changeSlide(step){
+    currentIndex = (currentIndex + step + images.length) % images.length;
+    lightboxImg.src = images[currentIndex];
+    updateCounter();
+  }
+  window.addEventListener("keydown", e => {
+    if (e.key === "Escape")      closeLightbox();
+    if (e.key === "ArrowRight")  changeSlide(1);
+    if (e.key === "ArrowLeft")   changeSlide(-1);
   });
-}
+
+  /* ---------- 4. HAMBURGER  +  SCROLL-LOCK ------------------------ */
+  const hamburger = document.getElementById("hamburger");
+  const nav       = document.querySelector("header nav");
+  const body      = document.body;
+
+  hamburger?.addEventListener("click", () => {
+    hamburger.classList.toggle("active");   // animate icon
+    nav.classList.toggle("active");         // show / hide overlay
+    body.classList.toggle("nav-open");      // lock / unlock page scroll
+  });
 </script>
 
 
