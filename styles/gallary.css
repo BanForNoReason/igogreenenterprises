@@ -229,3 +229,27 @@
 @media (max-width:767px){
   .back-btn{ margin:1rem 0 0 4vw; }
 }
+
+/* ─── Mobile / Tablet: fade-slide back-button into view ───────── */
+@media (max-width:767px){
+  /* the button is always fixed but starts hidden */
+  .back-btn{
+    position:fixed;
+    top:calc(var(--bar-h) + var(--logo-overhang) + 8px); /* just below header */
+    left:clamp(1rem,4vw,24px);
+    z-index:1350;
+
+    /* smooth entrance */
+    opacity:0;
+    transform:translateY(-8px);
+    pointer-events:none;                 /* ignore taps while hidden */
+    transition:opacity .3s ease, transform .3s ease;
+  }
+
+  /* becomes visible once .sticky class is added */
+  .back-btn.sticky{
+    opacity:1;
+    transform:translateY(0);
+    pointer-events:auto;
+  }
+}

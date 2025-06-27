@@ -175,8 +175,8 @@ nav ul li a:hover::after{ opacity:1; }
   }
 
   /* give the lines a brighter colour while nav is open */
-  .ham line{ stroke:#ffffff; }            /* normal (white)           */
-  .ham.active line{ stroke:#b89759; }     /* golden when it’s an X    }
+.ham line{ stroke:#ffffff; }            /* normal (white)             */
+.ham.active line{ stroke:#b89759; }     /* golden when it’s an X      */
 
   /* optional: slight background for better contrast              */
   .ham::after{
@@ -196,4 +196,42 @@ nav ul li a:hover::after{ opacity:1; }
 body.nav-open{
   overflow:hidden;
   height:100vh;     /* iOS fix */
+}
+
+/* ─────────────────────────────────────────────────────────────
+   RESPONSIVE LOGO SCALE – prevent content collisions
+   -------------------------------------------------------------
+   1.  ≥ 1670 px  → keep original 180 px (overhang ≈ 50 px)
+   2.  1669 - 1470 px → 140 px tall  (overhang ≈ 30 px)
+   3.  1469 - 993 px  → 110 px tall  (overhang ≈ 15 px)
+   4.  ≤ 992 px → fits inside 80 px bar (≈ 68 px tall) – logo no longer overhangs
+   ───────────────────────────────────────────────────────────*/
+
+/* — 2. MED-LARGE (≤ 1669 px) — */
+@media (max-width:1669px){
+  :root{ --logo-h:140px; }        /* updates --logo-overhang too */
+  .logo img{
+    height:var(--logo-h);
+    margin-left:-35px;            /* lighter horizontal pull      */
+  }
+}
+
+/* — 3. SMALL-DESKTOP / TABLET (≤ 1469 px) — */
+@media (max-width:1469px){
+  :root{ --logo-h:110px; }
+  .logo img{
+    height:var(--logo-h);
+    margin-left:-25px;
+  }
+}
+
+/* mobile “latched” style */
+@media (max-width:767px){
+  .back-btn.sticky{
+    position:fixed;
+    top:calc(var(--bar-h) + var(--logo-overhang) + 8px);
+    left:clamp(1rem,4vw,24px);
+    z-index:1350;            /* above content, below hamburger */
+    margin:0;                /* override old margin */
+  }
 }
