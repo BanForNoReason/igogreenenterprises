@@ -170,6 +170,29 @@ const fullFolder      = "/public/images/showerdoor-styles/framed/";
     body.classList.toggle("nav-open");      // lock / unlock page scroll
   });
 
+    /* Fade–slide back button ONCE; keep it visible thereafter */
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.querySelector('.back-btn');
+    if (!btn) return;
+
+    /* sentinel marks the point just below the header+logo */
+    const header   = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--bar-h'));
+    const overhang = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--logo-overhang'));
+    const sentinel = document.createElement('div');
+    sentinel.style.height = `${header + overhang + 8}px`;
+    document.body.prepend(sentinel);
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) {
+          /* user scrolled past sentinel → reveal button & stop observing */
+          btn.classList.add('sticky');
+          io.unobserve(e.target);          // keep it visible forever
+        }
+      });
+    });
+    io.observe(sentinel);
+  });
   
 </script>
 

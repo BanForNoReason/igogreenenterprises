@@ -216,3 +216,23 @@ body.loaded{ opacity:1; }
   max-width:70ch;
   margin:0 auto;          /* keep text nicely centered  */
 }
+
+/* put near the bottom of your stylesheet */
+.seo-content{
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 2rem 1rem;
+  line-height: 1.6;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333;
+}
+.seo-content h2,
+.seo-content h3{
+  color:#1f3520;
+  margin-bottom:.75rem;
+}
+.seo-content ul{
+  padding-left: 1.2rem;
+  margin: 1rem 0;
+}
+.seo-content li{ margin-bottom:.5rem; }
