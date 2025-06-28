@@ -220,3 +220,22 @@ body.services-page .service-grid::before{
   }
 }
 
+/* ========= MOBILE CARD HEIGHT + TEXT TUNE-UP ===================== */
+@media (max-width: 600px){
+
+  /* 1 ▸ keep aspect-ratio, but make it shorter than 4/5           */
+  .service-card{
+    aspect-ratio: 3 / 4;   /* ≈ 75 % of previous height            */
+    min-height: auto;      /* don’t force 320 px on narrow phones  */
+  }
+
+  /* 2 ▸ slightly smaller fonts so copy fits                      */
+  .card-front h2{ font-size: 1rem; }            /* was 1.2rem      */
+  .card-back  p { font-size: .9rem; line-height: 1.4; }
+
+  /* 3 ▸ wrap long words (Silicone-seals, ICC-approved, etc.)      */
+  .card-front h2,
+  .card-back  p{
+    overflow-wrap: anywhere;
+  }
+}
