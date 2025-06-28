@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- ── Core pages ─────────────────────────────────────────────── -->
+  <url><loc>https://igogreenenterprise.com/</loc></url>
+  <url><loc>https://igogreenenterprise.com/pages/about/</loc></url>
+  <url><loc>https://igogreenenterprise.com/pages/contact/</loc></url>
+
+  <!-- ── Service hub + first detail page (update as you add more) ─ -->
+  <url><loc>https://igogreenenterprise.com/pages/services/</loc></url>
+  <url><loc>https://igogreenenterprise.com/pages/services/frameless-shower-doors/</loc></url>
+  <!-- add later:
+    /pony-wall-shower-doors/
+    /sauna-steam-doors/
+    /exterior-glass-rails/
+    /interior-glass-rails/
+    /mirror-installations/
+    /custom-glass-partitions/
+    /framed-shower-doors/ -->
+
+  <!-- ── Portfolio hub + individual galleries ───────────────────── -->
+  <url><loc>https://igogreenenterprise.com/pages/portfolio/</loc></url>
+  <url><loc>https://igogreenenterprise.com/pages/portfolio/frameless-doors/</loc></url>
+  <url><loc>https://igogreenenterprise.com/pages/portfolio/ponywalldoors/</loc></url>
+  <url><loc>https://igogreenenterprise.com/pages/portfolio/steam-sauna-doors/</loc></url>
+  <url><loc>https://igogreenenterprise.com/pages/portfolio/framed-doors/</loc></url>
+  <url><loc>https://igogreenenterprise.com/pages/portfolio/glass-rails-walls/</loc></url>
+  <url><loc>https://igogreenenterprise.com/pages/portfolio/customdoors/</loc></url>
+
+  <!-- ── Blog index & first article (create when ready) ─────────── -->
+  <!-- <url><loc>https://igogreenenterprise.com/pages/blog/</loc></url>
+       <url><loc>https://igogreenenterprise.com/pages/blog/how-to-clean-frameless-glass/</loc></url> -->
+
+</urlset>

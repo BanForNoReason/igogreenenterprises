@@ -1,0 +1,68 @@
+:root{
+  --accent: #283618;
+  --maxw:   900px;
+  --gap:    clamp(1rem, 4vw, 2rem);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ── hero ─────────────────────────────────────────── */
+.service-hero{
+  text-align:center;
+  background:#1a1a1a;
+  color:#fff;
+  padding:4rem 1rem 2rem;
+}
+.service-hero img{
+  width:100%; 
+  max-width:400px; 
+  height:auto;
+  margin:2rem auto 0; 
+  border-radius:12px;
+  box-shadow:0 4px 16px rgba(0,0,0,.4);
+}
+
+/* ── copy blocks ──────────────────────────────────── */
+.service-copy{
+  max-width:var(--maxw); margin:var(--gap) auto; padding:0 1rem;
+  line-height:1.65; color:#333;
+}
+.service-copy h2{ color:var(--accent); margin-top:2.5rem; }
+
+/* lists */
+.service-copy ol, .service-copy ul{ margin-left:1.25rem; }
+.service-copy li{ margin-bottom:.5rem; }
+
+/* ── CTA box ───────────────────────────────────────── */
+.cta-box{
+  text-align:center; margin:3rem 0;
+}
+.btn-primary{
+  background:var(--accent); color:#fff;
+  padding:.9rem 1.6rem; border-radius:8px; text-decoration:none;
+  font-weight:bold; transition:background .25s;
+}
+.btn-primary:hover{ background:#3a4b1e; }
+
+/* ── FAQ ──────────────────────────────────────────── */
+.faq{
+  max-width:var(--maxw); margin:4rem auto 2rem; padding:0 1rem;
+}
+.faq h2{ color:var(--accent); }
+.faq details{ margin-bottom:1.2rem; border:1px solid #e1e1e1; border-radius:6px; }
+.faq summary{
+  cursor:pointer; padding:.75rem 1rem;
+  font-weight:bold; background:#f7f7f7;
+}
+.faq p{ padding:0 1rem 1rem; margin:0; }
+
+/* ── responsive hero text ─────────────────────────── */
+.service-hero h1{ font-size:clamp(1.9rem, 4vw, 3rem); margin:0 0 .5rem; }
+.service-hero .strapline{ font-size:clamp(1rem, 2vw, 1.25rem); }
+
+@media(max-width:600px){
+  .service-hero{ padding:3rem 1rem 1.5rem; }
+}
+
+@media (max-width: 1400px){
+  :root{ --maxw: 900px; }
+}

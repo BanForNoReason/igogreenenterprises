@@ -199,3 +199,24 @@ body.services-page .service-grid::before{
   .card-inner{ transition:none !important; }
 }
 
+/* 1 ▸ responsive grid columns + gap */
+@media (max-width: 600px){
+  .service-grid{             /* already two columns */
+    gap: .75rem;             /* was 1rem → gives each card more room */
+  }
+}
+
+@media (max-width: 425px){   /* small phones → one column */
+  .service-grid{
+    grid-template-columns: 1fr;
+    gap: .9rem;
+  }
+}
+
+/* 2 ▸ let short cards shrink naturally */
+@media (max-width: 600px){
+  .service-card{
+    min-height: auto;        /* overrides earlier 320 px rule */
+  }
+}
+
