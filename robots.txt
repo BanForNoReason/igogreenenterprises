@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://banfornoreason.github.io/igogreenenterprise/sitemap.xml
-Sitemap: https://igogreenenterprise.com/sitemap.xml
+Sitemap: https://banfornoreason.github.io/igogreenenterprises/sitemap.xml
+Sitemap: https://igogreenenterprises.com/sitemap.xml
