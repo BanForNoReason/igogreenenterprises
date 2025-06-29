@@ -16,26 +16,109 @@
     <link rel="preload" as="image" href="/public/images/servic-hero.webp" type="image/webp">
 
 
-    <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://banfornoreason.github.io/igogreenenterprise/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Services",
-              "item": "https://banfornoreason.github.io/igogreenenterprise/pages/services.html"
-            }
-          ]
-        }
-        </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+
+      {
+        "@type": "WebPage",
+        "@id": "https://igogreenenterprise.com/pages/services/",
+        "url": "https://igogreenenterprise.com/pages/services/",
+        "name": "Glass & Mirror Installation Services | IGo Green Enterprises Inc.",
+        "description": "Overview of custom shower doors, glass rails, mirrors and glass-partition services available across Seattle, Bellevue, Kirkland and the Eastside.",
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://igogreenenterprise.com/public/images/servic-hero.webp",
+          "width": 1600,
+          "height": 900
+        },
+        "breadcrumb": { "@id": "https://igogreenenterprise.com/pages/services/#breadcrumb" },
+        "about": { "@id": "https://igogreenenterprise.com/#business" }
+      },
+
+      {
+        "@type": "ItemList",
+        "@id": "https://igogreenenterprise.com/pages/services/#list",
+        "itemListElement": [
+
+          { "@type":"ListItem", "position":1, "item":{
+              "@type":"Service",
+              "@id":"https://igogreenenterprise.com/pages/services/frameless-shower-doors/",
+              "name":"Frameless Shower-Door Installation",
+              "description":"Minimalist, hardware-light enclosures built from ⅜-inch Starphire™ glass for a spacious, modern look.",
+              "areaServed":["Seattle WA","Bellevue WA","Kirkland WA"]
+          }},
+
+          { "@type":"ListItem", "position":2, "item":{
+              "@type":"Service",
+              "@id":"https://igogreenenterprise.com/pages/services/sauna-steam-doors/",
+              "name":"Sauna & Steam-Shower Doors",
+              "description":"Heat-tolerant glass doors with silicone seals and stainless hinges rated to 220 °F for steam and sauna rooms.",
+              "areaServed":["Seattle WA","Bellevue WA","Kirkland WA"]
+          }},
+
+          { "@type":"ListItem", "position":3, "item":{
+              "@type":"Service",
+              "@id":"https://igogreenenterprise.com/pages/services/exterior-glass-rails/",
+              "name":"Exterior Glass Rails",
+              "description":"Balcony and deck railings that block wind, not views—laminated safety glass on ICC-approved standoff mounts.",
+              "areaServed":["Seattle WA","Bellevue WA","Kirkland WA"]
+          }},
+
+          { "@type":"ListItem", "position":4, "item":{
+              "@type":"Service",
+              "@id":"https://igogreenenterprise.com/pages/services/interior-glass-rails/",
+              "name":"Interior Glass Rails",
+              "description":"Floating stair and loft rails in ultra-clear glass with child-safe edge polishing and concealed anchors.",
+              "areaServed":["Seattle WA","Bellevue WA","Kirkland WA"]
+          }},
+
+          { "@type":"ListItem", "position":5, "item":{
+              "@type":"Service",
+              "@id":"https://igogreenenterprise.com/pages/services/mirror-installations/",
+              "name":"Mirror Installations",
+              "description":"Wall-to-wall gym mirrors, dance studios, vanity mirrors and custom cut-outs for outlets & lights.",
+              "areaServed":["Seattle WA","Bellevue WA","Kirkland WA"]
+          }},
+
+          { "@type":"ListItem", "position":6, "item":{
+              "@type":"Service",
+              "@id":"https://igogreenenterprise.com/pages/services/custom-glass-partitions/",
+              "name":"Custom Glass Partitions",
+              "description":"Floor-to-ceiling glass walls for offices, conference rooms and retail storefronts.",
+              "areaServed":["Seattle WA","Bellevue WA","Kirkland WA"]
+          }},
+
+          { "@type":"ListItem", "position":7, "item":{
+              "@type":"Service",
+              "@id":"https://igogreenenterprise.com/pages/services/pony-wall-shower-doors/",
+              "name":"Pony-Wall Shower Doors",
+              "description":"Half-height tile walls topped with seamless glass—ideal for benches, niches and shelving.",
+              "areaServed":["Seattle WA","Bellevue WA","Kirkland WA"]
+          }},
+
+          { "@type":"ListItem", "position":8, "item":{
+              "@type":"Service",
+              "@id":"https://igogreenenterprise.com/pages/services/framed-shower-doors/",
+              "name":"Framed Shower Doors",
+              "description":"Time-tested aluminum surrounds for reliable function and easy maintenance—perfect for budget remodels.",
+              "areaServed":["Seattle WA","Bellevue WA","Kirkland WA"]
+          }}
+        ]
+      },
+
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://igogreenenterprise.com/pages/services/#breadcrumb",
+        "itemListElement": [
+          { "@type":"ListItem","position":1,"name":"Home","item":"https://igogreenenterprise.com/" },
+          { "@type":"ListItem","position":2,"name":"Services","item":"https://igogreenenterprise.com/pages/services/" }
+        ]
+      }
+    ]
+  }
+  </script>
         
 </head>
 <body>

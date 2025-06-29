@@ -16,19 +16,83 @@
   <link rel="manifest" href="/public/site.webmanifest">
   <link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon">
 
-  <!-- Breadcrumb JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"BreadcrumbList",
-    "itemListElement":[
-      {"@type":"ListItem","position":1,"name":"Home",
-       "item":"https://banfornoreason.github.io/igogreenenterprise/"},
-      {"@type":"ListItem","position":2,"name":"Contact",
-       "item":"https://banfornoreason.github.io/igogreenenterprise/pages/contact.html"}
-    ]
-  }
-  </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://igogreenenterprise.com/#business",
+      "name": "IGo Green Enterprises Inc.",
+      "url": "https://igogreenenterprise.com",
+      "logo": "https://igogreenenterprise.com/public/images/logo.png",
+      "image": "https://igogreenenterprise.com/public/images/about-hero.webp",
+      "description": "Seattle-based specialists in frameless shower doors, glass rails, mirrors and custom glazing since 2008.",
+      "telephone": "+1-206-715-6166",
+      "email": "mailto:tim.igogreen@gmail.com",
+      "areaServed": [
+        "Seattle WA",
+        "Bellevue WA",
+        "Kirkland WA",
+        "King County WA"
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "telephone": "+1-206-715-6166",
+          "email": "tim.igogreen@gmail.com",
+          "areaServed": "US-WA",
+          "availableLanguage": [ "English" ]
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/igogreenenterprise",
+        "https://www.yelp.com/biz/igo-green-enterprises-seattle"
+      ]
+    },
+
+    {
+      "@type": "ContactPage",
+      "@id": "https://igogreenenterprise.com/pages/contact/#webpage",
+      "url": "https://igogreenenterprise.com/pages/contact/",
+      "name": "Contact IGo Green Enterprises Inc.",
+      "description": "Request a quote, ask a question, or schedule a site visit for custom glass and mirror installations in the Greater Seattle area.",
+      "isPartOf": { "@id": "https://igogreenenterprise.com/#website" },
+      "about":     { "@id": "https://igogreenenterprise.com/#business" },
+      "breadcrumb":{ "@id": "https://igogreenenterprise.com/pages/contact/#breadcrumb" }
+    },
+
+    {
+      "@type": "WebSite",
+      "@id": "https://igogreenenterprise.com/#website",
+      "url":  "https://igogreenenterprise.com/",
+      "name": "IGo Green Enterprises Inc.",
+      "publisher": { "@id": "https://igogreenenterprise.com/#business" }
+    },
+
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://igogreenenterprise.com/pages/contact/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://igogreenenterprise.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Contact",
+          "item": "https://igogreenenterprise.com/pages/contact/"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 
 <body>

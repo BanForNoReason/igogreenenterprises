@@ -15,26 +15,102 @@
     <link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon">
 
 
-    <script type="application/ld+json">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://igogreenenterprise.com/#business",
+      "name": "IGo Green Enterprises Inc.",
+      "url":  "https://igogreenenterprise.com",
+      "logo": "https://igogreenenterprise.com/public/images/logo.png"
+    },
+
+    {
+      "@type": "CollectionPage",
+      "@id": "https://igogreenenterprise.com/pages/portfolio/#webpage",
+      "url":  "https://igogreenenterprise.com/pages/portfolio/",
+      "name": "Project Portfolio | IGo Green Enterprises Inc.",
+      "description": "Browse completed frameless shower doors, glass rails, mirrors and other custom glass projects across Seattle & the Eastside.",
+      "isPartOf": { "@id": "https://igogreenenterprise.com/#website" },
+      "about":     { "@id": "https://igogreenenterprise.com/#business" },
+      "breadcrumb":{ "@id": "https://igogreenenterprise.com/pages/portfolio/#breadcrumb" },
+      "hasPart":   { "@id": "https://igogreenenterprise.com/pages/portfolio/#itemlist" }
+    },
+
+    {
+      "@type": "ItemList",
+      "@id":   "https://igogreenenterprise.com/pages/portfolio/#itemlist",
+      "name":  "Portfolio Categories",
+      "itemListElement": [
         {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://banfornoreason.github.io/igogreenenterprise/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Portfolio",
-              "item": "https://banfornoreason.github.io/igogreenenterprise/pages/portfolio.html"
-            }
-          ]
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Frameless Shower Doors",
+          "url":  "https://igogreenenterprise.com/pages/portfolio/frameless-doors/",
+          "image": "https://igogreenenterprise.com/public/images/showerdoor-styles/frameless/Framelessplaceholder.jpg"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Steam & Sauna Doors",
+          "url":  "https://igogreenenterprise.com/pages/portfolio/steam-sauna-doors/",
+          "image": "https://igogreenenterprise.com/public/images/showerdoor-styles/steam-sauna-doors/seamsaunadoorThumb.jpg"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Custom Doors",
+          "url":  "https://igogreenenterprise.com/pages/portfolio/customdoors/",
+          "image": "https://igogreenenterprise.com/public/images/showerdoor-styles/customdoor/customDoorThumb.jpg"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Pony-Wall Doors",
+          "url":  "https://igogreenenterprise.com/pages/portfolio/ponywalldoors/",
+          "image": "https://igogreenenterprise.com/public/images/showerdoor-styles/ponywall/ponywalldoorThumb.jpg"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Framed Shower Doors",
+          "url":  "https://igogreenenterprise.com/pages/portfolio/framed-doors/",
+          "image": "https://igogreenenterprise.com/public/images/showerdoor-styles/framed/framedPlaceholder.jpg"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "Glass Rails & Walls",
+          "url":  "https://igogreenenterprise.com/pages/portfolio/glass-rails-walls/",
+          "image": "https://igogreenenterprise.com/public/images/showerdoor-styles/glass-rails-walls/glassrailswallsThumb.jpg"
         }
-        </script>
+      ]
+    },
+
+    {
+      "@type": "WebSite",
+      "@id": "https://igogreenenterprise.com/#website",
+      "url": "https://igogreenenterprise.com/",
+      "name": "IGo Green Enterprises Inc.",
+      "publisher": { "@id": "https://igogreenenterprise.com/#business" }
+    },
+
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://igogreenenterprise.com/pages/portfolio/#breadcrumb",
+      "itemListElement": [
+        { "@type":"ListItem", "position":1, "name":"Home",
+          "item":"https://igogreenenterprise.com/" },
+        { "@type":"ListItem", "position":2, "name":"Portfolio",
+          "item":"https://igogreenenterprise.com/pages/portfolio/" }
+      ]
+    }
+  ]
+}
+</script>
         
 </head>
 <body>
