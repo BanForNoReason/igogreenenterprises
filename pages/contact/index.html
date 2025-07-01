@@ -96,7 +96,6 @@
 </head>
 
 <body>
-  <!-- ─── HEADER ───────────────────────────────────── -->
     <header>
       <div class="header-inner">
         <div class="logo">
@@ -115,7 +114,6 @@
           </ul>
         </nav>
 
-        <!-- Hamburger SVG Icon -->
         <svg class="ham ham3" id="hamburger" viewBox="0 0 100 100" width="50">
             <path class="line top" d="m 70,33 h -40 c -11.092231,0 11.883874,13.496726 -3.420361,12.956839 -0.962502,-2.089471 -2.222071,-3.282996 -4.545687,-3.282996 -2.323616,0 -5.113897,2.622752 -5.113897,7.071068 0,4.448316 2.080609,7.007933 5.555839,7.007933 2.401943,0 2.96769,-1.283974 4.166879,-3.282995 2.209342,0.273823 4.031294,1.642466 5.857227,-0.252538 v -13.005715 16.288404 h 7.653568" />
             <path class="line middle" d="m 70,50 h -40 c -5.6862,0 -8.534259,5.373483 -8.534259,11.551069 0,7.187738 3.499166,10.922274 13.131984,10.922274 11.021777,0 7.022787,-15.773343 15.531095,-15.773343 3.268142,0 5.177031,-2.159429 5.177031,-6.7 0,-4.540571 -1.766442,-7.33533 -5.087851,-7.326157 -3.321409,0.0092 -5.771288,2.789632 -5.771288,7.326157 0,4.536525 2.478983,6.805271 5.771288,6.7" />
@@ -124,7 +122,6 @@
       </div>
     </header>
 
-  <!-- ─── MAIN ─────────────────────────────────────── -->
   <main>
     <section class="contact-hero">
       <h1>Contact IGo Green Enterprises Inc.</h1>
@@ -133,7 +130,6 @@
 
     <section class="contact-form">
       <form id="quote-form" method="POST" action="https://formspree.io/f/xeokrwar">
-        <!-- row 1 -->
         <div class="field">
           <label for="name">Name *</label>
           <input id="name" name="name" type="text" required>
@@ -145,7 +141,6 @@
                  pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,63}$" required>
         </div>
 
-        <!-- row 2 -->
         <div class="field">
           <label for="phone">Phone <small>(optional – fastest replies)</small></label>
           <input id="phone" name="phone" type="tel">
@@ -156,7 +151,6 @@
           <input id="city" name="city" type="text">
         </div>
 
-        <!-- row 3 -->
         <div class="field">
           <label for="door">Door / Mirror Type *</label>
           <select id="door" name="door" required>
@@ -184,18 +178,15 @@
           </select>
         </div>
 
-        <!-- 🐝 honeypot -->
         <label class="hp" for="website">Website</label>
         <input id="website" name="website" type="text">
 
-        <!-- message -->
         <div class="field span-2">
           <label for="message">Message (optional)</label>
           <textarea id="message" name="message" rows="5"
                     placeholder="Measurements, time-frame, questions…"></textarea>
         </div>
 
-        <!-- submit -->
         <div class="span-2">
           <button type="submit">Send Message</button>
         </div>
@@ -230,9 +221,8 @@
     </div>
   </footer>
 
-  <!-- ─── SCRIPTS ───────────────────────────────────── -->
   <script>
-    /* ---------------- Hamburger toggle ---------------- */
+
     const ham  = document.getElementById('hamburger');
     const nav  = document.querySelector('header nav');
     ham?.addEventListener('click', () => {
@@ -241,11 +231,9 @@
       document.body.classList.toggle('nav-open');
     });
 
-    /* --------------- Form enhancements ---------------- */
     const form   = document.getElementById('quote-form');
     const fields = [...form.querySelectorAll('.field, .span-2')];
 
-    /* fade-in on first viewport entry */
     const fadeIO = new IntersectionObserver((ents, obs) => {
       if (!ents[0].isIntersecting) return;
       fields.forEach((el, i) => setTimeout(() => el.classList.add('show'), i * 120));
@@ -253,7 +241,6 @@
     }, {threshold:0.2});
     fadeIO.observe(form);
 
-    /* disable hardware when Mirror picked */
     const doorSel = document.getElementById('door');
     const hwSel   = document.getElementById('hardware');
     doorSel.addEventListener('change', () => {
@@ -262,15 +249,12 @@
       if (isMirror) hwSel.value = 'N/A – Mirror';
     });
 
-    /* submission guard: honeypot + bad domains + shake invalids */
     const badDomains = ['mailinator','trashmail','tempmail','10minutemail',
                         'gmai.com','gnail.com','yaho.com'];
 
     form.addEventListener('submit', e => {
-      /* honeypot */
       if (form.website.value.trim() !== '') { e.preventDefault(); return; }
 
-      /* disposable / typo domain check */
       const email  = form.email.value.trim().toLowerCase();
       const domain = email.split('@')[1] || '';
       if (badDomains.some(d => domain.includes(d))) {
@@ -278,7 +262,6 @@
         e.preventDefault(); return;
       }
 
-      /* HTML5 invalid shake */
       const bad = [...form.elements].filter(el => !el.checkValidity());
       if (bad.length){
         e.preventDefault();

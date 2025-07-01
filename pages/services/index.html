@@ -157,7 +157,6 @@
 
 <section class="service-grid">
 
-  <!-- 1 ▸ Frameless Shower Doors -->
   <article class="service-card">
     <div class="card-inner">
 
@@ -181,7 +180,6 @@
     </div>
   </article>
 
-  <!-- 2 ▸ Sauna & Steam Doors -->
   <article class="service-card">
     <div class="card-inner">
 
@@ -204,12 +202,11 @@
     </div>
   </article>
 
-  <!-- 3 ▸ Exterior Glass Rails -->
   <article class="service-card">
     <div class="card-inner">
 
       <div class="card-face card-front">
-        <img src="/public/images/showerdoor-styles/glass-rails-walls/93.JPG"
+        <img src="/public/images/showedoor-styles/glass-rails-walls/93.JPG"
              alt="Exterior glass rail">
         <h2>Exterior Glass Rails</h2>
       </div>
@@ -228,7 +225,6 @@
     </div>
   </article>
 
-  <!-- 4 ▸ Interior Glass Rails -->
   <article class="service-card">
     <div class="card-inner">
 
@@ -251,7 +247,6 @@
     </div>
   </article>
 
-  <!-- 5 ▸ Mirror Installations -->
   <article class="service-card">
     <div class="card-inner">
 
@@ -274,7 +269,6 @@
     </div>
   </article>
 
-  <!-- 6 ▸ Custom Glass Partitions -->
   <article class="service-card">
     <div class="card-inner">
 
@@ -297,7 +291,6 @@
     </div>
   </article>
 
-  <!-- 7 ▸ Pony-Wall Shower Doors -->
   <article class="service-card">
     <div class="card-inner">
 
@@ -320,7 +313,6 @@
     </div>
   </article>
 
-  <!-- 8 ▸ Framed Shower Doors -->
   <article class="service-card">
     <div class="card-inner">
 
@@ -394,15 +386,12 @@
   });
 
   document.querySelectorAll('.service-card').forEach(card => {
-  // flip on click/tap
   card.addEventListener('click', () => card.classList.toggle('flipped'));
 
-  // also flip back when the user presses Esc (good for keyboard users)
   card.addEventListener('keyup', e => {
     if (e.key === 'Escape') card.classList.remove('flipped');
   });
 
-  // make the whole card focusable for keyboard accessibility
   card.tabIndex = 0;
 });
 </script>
