@@ -198,6 +198,75 @@ body.nav-open{
   height:100vh;     /* iOS fix */
 }
 
+/* ───── Footer enhancements ───── */
+.site-footer{
+  background:#283618;
+  color:#e8e8e8;                     /* slightly softer white */
+  padding:2.5rem 4vw 1.25rem;
+  border-top:4px solid #3c4c28;      /* subtle top separator  */
+}
+
+.site-footer h3,
+.site-footer h4{
+  margin-top:0;
+  color:#fff;
+  letter-spacing:.4px;
+}
+
+.footer-areas ul,
+.footer-links ul{
+  list-style:none;
+  padding:0; margin:0;
+}
+
+.footer-areas ul li,
+.footer-links ul li{ margin:.4rem 0; }
+
+.footer-areas a,
+.footer-links a,
+.contact-email,
+.contact-phone{
+  color:#e8e8e8;
+  text-decoration:none;
+  transition:color .3s ease;
+}
+.footer-areas a:hover,
+.footer-links a:hover,
+.contact-email:hover,
+.contact-phone:hover{ color:#b89759; }
+
+.contact-email,
+.contact-phone{
+  font-weight:600;
+  display:inline-flex;
+  align-items:center;
+  gap:.4rem;
+}
+
+.contact-email svg,
+.contact-phone svg{
+  width:1.1em; height:1.1em;
+  flex:none; fill:#b89759;
+  transition:fill .3s ease;
+}
+.contact-email:hover svg,
+.contact-phone:hover svg{ fill:#e8e8e8; }
+
+/* Keep columns tidy on larger screens */
+.footer-about, .footer-links, .footer-areas, .footer-contact{
+  flex:1 1 230px;
+}
+
+/* Stack columns on small devices */
+@media(max-width:768px){
+  .footer-container{
+    flex-direction:column;
+    text-align:center;
+    gap:1.5rem;
+  }
+}
+
+
 /* ─────────────────────────────────────────────────────────────
    RESPONSIVE LOGO SCALE – prevent content collisions
    -------------------------------------------------------------
