@@ -1,5 +1,5 @@
+# robots.txt — igogreenenterprises.com
 User-agent: *
-Allow: /
+Disallow: /public/images/
 
-Sitemap: https://banfornoreason.github.io/igogreenenterprises/sitemap.xml
 Sitemap: https://igogreenenterprises.com/sitemap.xml
