@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <!-- ── Core pages ─────────────────────────────────────────────── -->
-  <url><loc>https://igogreenenterprises.com/</loc></url>
-  <url><loc>https://igogreenenterprises.com/pages/about/</loc></url>
-  <url><loc>https://igogreenenterprises.com/pages/contact/</loc></url>
+  <url><loc>https://igogreenenterprises.com/</loc><lastmod>2025-07-01</lastmod></url>
+  <url><loc>https://igogreenenterprises.com/pages/about/</loc><lastmod>2025-07-01</lastmod></url>
+  <url><loc>https://igogreenenterprises.com/pages/contact/</loc><lastmod>2025-07-01</lastmod></url>
 
   <!-- ── Service hub + first detail page (update as you add more) ─ -->
-  <url><loc>https://igogreenenterprises.com/pages/services/</loc></url>
-  <url><loc>https://igogreenenterprises.com/pages/services/frameless-shower-doors/</loc></url>
+  <url><loc>https://igogreenenterprises.com/pages/services/</loc><lastmod>2025-07-01</lastmod></url>
+  <url><loc>https://igogreenenterprises.com/pages/services/frameless-shower-doors/</loc><lastmod>2025-07-01</lastmod></url>
   <!-- add later:
     /pony-wall-shower-doors/
     /sauna-steam-doors/
@@ -19,16 +19,16 @@
     /framed-shower-doors/ -->
 
   <!-- ── Portfolio hub + individual galleries ───────────────────── -->
-  <url><loc>https://igogreenenterprises.com/pages/portfolio/</loc></url>
-  <url><loc>https://igogreenenterprises.com/pages/portfolio/frameless-doors/</loc></url>
-  <url><loc>https://igogreenenterprises.com/pages/portfolio/ponywalldoors/</loc></url>
-  <url><loc>https://igogreenenterprises.com/pages/portfolio/steam-sauna-doors/</loc></url>
-  <url><loc>https://igogreenenterprises.com/pages/portfolio/framed-doors/</loc></url>
-  <url><loc>https://igogreenenterprises.com/pages/portfolio/glass-rails-walls/</loc></url>
-  <url><loc>https://igogreenenterprises.com/pages/portfolio/customdoors/</loc></url>
+  <url><loc>https://igogreenenterprises.com/pages/portfolio/</loc><lastmod>2025-07-03</lastmod></url>
+  <url><loc>https://igogreenenterprises.com/pages/portfolio/frameless-doors/</loc><lastmod>2025-07-01</lastmod></url>
+  <url><loc>https://igogreenenterprises.com/pages/portfolio/ponywalldoors/</loc><lastmod>2025-07-0q</lastmod></url>
+  <url><loc>https://igogreenenterprises.com/pages/portfolio/steam-sauna-doors/</loc><lastmod>2025-07-03</lastmod></url>
+  <url><loc>https://igogreenenterprises.com/pages/portfolio/framed-doors/</loc><lastmod>2025-07-01</lastmod></url>
+  <url><loc>https://igogreenenterprises.com/pages/portfolio/glass-rails-walls/</loc><lastmod>2025-07-01</lastmod></url>
+  <url><loc>https://igogreenenterprises.com/pages/portfolio/customdoors/</loc><lastmod>2025-07-01</lastmod></url>
 
   <!-- ── Blog index & first article (create when ready) ─────────── -->
-  <!-- <url><loc>https://igogreenenterprise.com/pages/blog/</loc></url>
-       <url><loc>https://igogreenenterprise.com/pages/blog/how-to-clean-frameless-glass/</loc></url> -->
+  <!-- <url><loc>https://igogreenenterprises.com/pages/blog/</loc></url>
+       <url><loc>https://igogreenenterprises.com/pages/blog/how-to-clean-frameless-glass/</loc></url> -->
 
 </urlset>
